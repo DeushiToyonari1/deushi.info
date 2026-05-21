@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+// 横幅（px）
+$siteWidthSize: 1200px;
+$mainContainerWidthSize: 800px;
+$subContainerWidthSize: 360px;
+
+// 横幅（%）
+$mainContainerWidth: ($mainContainerWidthSize/($siteWidthSize/100))+0%;
+$subContainerWidth: ($subContainerWidthSize/($siteWidthSize/100))+0%;
+
+// ブレークポイント
+$small: "only screen and (max-width:767px)";
+$small-middle: "only screen and (min-width:768px) and (max-width:980px)";
+$middle: "only screen and (max-width:750px)";
+$large: "only screen and (min-width:980px)";

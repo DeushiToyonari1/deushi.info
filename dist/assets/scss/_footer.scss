@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+@use "sass:math";
+@use "./common";
+
+.siteFooter {
+    width: 100%;
+    height: min(80px, common.px-to-vw(80));
+    background: var(--mainColor);
+
+    @media screen and (max-width: 768px) {
+        height: min(80px, common.px-to-vw(80));
+    }
+
+    .siteFooter__footerLink {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50%;
+        a {
+            line-height: 1;
+            font-size: min(16px, common.px-to-vw(16));
+            color: #fff;
+
+            &:hover {
+                text-decoration: none;
+            }
+
+            @media screen and (max-width: 768px) {
+                font-size: min(20px, common.px-to-vw(20));
+            }
+        }
+    }
+    .siteFooter__copyright {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50%;
+        small {
+            line-height: 1;
+            font-size: min(12px, common.px-to-vw(12));
+            color: #fff;
+
+            @media screen and (max-width: 768px) {
+                font-size: min(20px, common.px-to-vw(20));
+            }
+        }
+    }
+}

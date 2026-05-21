@@ -11,8 +11,8 @@ $mainContainerWidthSize: 800px;
 $subContainerWidthSize: 360px;
 
 // 横幅（%）
-$mainContainerWidth: ($mainContainerWidthSize/($siteWidthSize/100))+0%;
-$subContainerWidth: ($subContainerWidthSize/($siteWidthSize/100))+0%;
+$mainContainerWidth: ($mainContainerWidthSize/($siteWidthSize/100)) * 1%;
+$subContainerWidth: ($subContainerWidthSize/($siteWidthSize/100)) * 1%;
 
 // ブレークポイント
 $small:  "only screen and (max-width:767px)";

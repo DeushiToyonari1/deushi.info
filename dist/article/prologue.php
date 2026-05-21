@@ -15,7 +15,7 @@
     <meta property="og:description" content="<?php echo $description; ?>">
     <meta property="og:type" content="website">
     <meta property="og:url" content="<?php echo $REQUEST_URL ?>">
-    <meta property="og:image" content="<?php echo $DOCUMENT_ROOT_URL; ?>assets/images/ogp-prologue.jpg">
+    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/assets/images/ogp-prologue.jpg">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -26,10 +26,10 @@
     <meta name="twitter:creator" content="@HYPER_USHI">
     <meta name="twitter:title" content="<?php echo $SITE_TITLE; ?>">
     <meta name="twitter:description" content="<?php echo $description; ?>">
-    <meta name="twitter:image" content="<?php echo $DOCUMENT_ROOT_URL; ?>">
-    <link rel="shortcut icon" href="<?php echo $DOCUMENT_ROOT_URL; ?>assets/images/favicon.ico">
-    <link rel="icon" href="<?php echo $DOCUMENT_ROOT_URL; ?>assets/images/favicon.ico">
-    <link rel="stylesheet" href="<?php echo $DOCUMENT_ROOT_URL; ?>assets/css/style.css?v=<?php echo $VERSION; ?>" media="all">
+    <meta name="twitter:image" content="<?php echo get_template_directory_uri(); ?>/">
+    <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/assets/images/favicon.ico">
+    <link rel="icon" href="<?php echo get_template_directory_uri(); ?>/assets/images/favicon.ico">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/style.css?v=<?php echo $VERSION; ?>" media="all">
     <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -50,13 +50,13 @@
             <nav class="breadCrumb">
                 <ol class="breadCrumb__list">
                     <li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
-                        <a href="<?php echo $DOCUMENT_ROOT_URL; ?>" itemprop="url">
+                        <a href="<?php echo get_template_directory_uri(); ?>/" itemprop="url">
                             <span itemprop="title">ホーム</span>
                         </a>
                         <i aria-hidden="true"></i>
                     </li>
                     <li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
-                        <a href="<?php echo $DOCUMENT_ROOT_URL; ?>" itemprop="url">
+                        <a href="<?php echo get_template_directory_uri(); ?>/" itemprop="url">
                             <span itemprop="title">未分類</span>
                         </a>
                         <i aria-hidden="true"></i>
@@ -74,7 +74,7 @@
                     <div class="articlePost__header-meta">
                         <time datetime="2019-03-29" class="articlePost__date-write">2019.03.29</time>
                     </div>
-                    <div class="articlePost__header-media"><img src="<?php echo $DOCUMENT_ROOT_URL; ?>assets/images/mv-prologue.jpg" alt="メインビジュアル"></div>
+                    <div class="articlePost__header-media"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/mv-prologue.jpg" alt="メインビジュアル"></div>
                     <div class="articlePost__header-sentence">
                         <p>過去にもブログサイトをやっていたことはありますが、忙しさゆえ、サイトを閉鎖してしまいました。<br>あれから数年、ようやく重たい腰を上げ、新たにブログサイトを立ち上げることとなりました（祝）</p>
                         <p>以前のブログサイトでは技術的なナレッジのみでしたが、これからのブログについては技術的なことのみならず、私生活だったり、私的なメモとして記録を残していきたいと考えています。<br>ニッチな話題を沢山持っているので、誰かの役に立てればとも考えています。</p>
@@ -103,7 +103,7 @@
                     <h2 class="articlePost__section-title" id="section__1">まずは簡単に自己紹介をしたいと思います。</h2>
                     <div class="textPhoto2column">
                         <div class="textPhoto2column__photoLeft">
-                            <img src="<?php echo $DOCUMENT_ROOT_URL; ?>assets/images/image-prologue_01.jpg" alt="出牛">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/image-prologue_01.jpg" alt="出牛">
                         </div>
                         <div class="textPhoto2column__textRight">
                             <p>都内某所にあるWeb制作会社にて、Webディレクターをやっています。<br>過去10年ほどデザイン、コーディング、プログラミング、色々な制作を経て、最終的に今のディレクターという職域に落ち着きました。<br>長い人生という意味では、本当にこれで落ち着いたのかはわかりませんが。</p>
@@ -114,7 +114,7 @@
                         <h3 class="articlePost__section-subTitle" id="section__1_1">一番の趣味はサバゲー</h3>
                         <div class="textPhoto2column">
                             <div class="textPhoto2column__photoRight">
-                                <img src="<?php echo $DOCUMENT_ROOT_URL; ?>assets/images/image-prologue_02.jpg" alt="サバゲーをやっている様子">
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/image-prologue_02.jpg" alt="サバゲーをやっている様子">
                             </div>
                             <div class="textPhoto2column__textLeft">
                                 <p>色々と多趣味ではありますが、自信を持って言えるのが一番の趣味はサバゲーであるということ。<br>2013年の4月から始めて、早6年が経ちますね。<br>ここまでのめり込める趣味があるのは良いことなのですが、如何せん、お金がかかってしょうがない趣味なんですよね。。。</p>
@@ -132,7 +132,7 @@
                     <h2 class="articlePost__section-title" id="section__2">二児の父親をやっています</h2>
                     <p>うちには1歳と4ヵ月になる双子の女の子がいます。<br>二卵性の双子なので、姉妹レベルで似てはいますが、親から見ればしっかりと顔の違いがわかりますし、性格にも違いがあるのがわかります。</p>
                     <div class="imageArea isCenter">
-                        <img src="<?php echo $DOCUMENT_ROOT_URL; ?>assets/images/image-prologue_03.jpg" alt="二児の父親">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/image-prologue_03.jpg" alt="二児の父親">
                     </div>
                 </section>
                 <section class="articlePost__section">
@@ -145,13 +145,12 @@
                     </section>
                 </section>
                 <footer class="articlePost__footer">
-                    <?php include_once("../include/snsArea.php"); ?>
                     <?php include_once("../include/profileArea.php"); ?>
                     <?php
                     /*
                     <aside class="pageNation">
-                        <div class="pageNation__prev-active"><a href="<?php echo $DOCUMENT_ROOT_URL; ?>">前の記事</a></div>
-                        <div class="pageNation__next-active"><a href="<?php echo $DOCUMENT_ROOT_URL; ?>">次の記事</a></div>
+                        <div class="pageNation__prev-active"><a href="<?php echo get_template_directory_uri(); ?>/">前の記事</a></div>
+                        <div class="pageNation__next-active"><a href="<?php echo get_template_directory_uri(); ?>/">次の記事</a></div>
                     </aside>
                     */
                     ?>

@@ -7,20 +7,18 @@
 @import "ptp-14";// フォントサイズ指定
 @import "webFont";
 
-.subContainer {
+.sidebar {
     margin-left: auto;
     width: $subContainerWidth;
 }
 
-.subContainer__category,
-.subContainer__recentPosts,
-.subContainer__archivePosts {
+.sidebar__section--category,
+.sidebar__section--recent,
+.sidebar__section--archive {
     margin-bottom: 40px;
 }
 
-.subContainer__category-title,
-.subContainer__recentPosts-title,
-.subContainer__archivePosts-title {
+.sidebar__section-title {
     display: flex;
     align-items: center;
     padding-left: 10px;
@@ -32,15 +30,15 @@
     box-sizing: border-box;
 }
 
-.subContainer__articleSearch {
+.sidebar__search {
     margin-bottom: 20px;
-    .articleSearchForm {
+    .search-form {
         display: flex;
         width: 100%;
         height: 40px;
         input[type="search"] {
             padding: 0 20px;
-            width: (310px/(360px/100))+0%;
+            width: (310px/(360px/100)) * 1%;
             border: 1px solid $mainColor;
             border-radius: 40px;
             box-sizing: border-box;
@@ -56,7 +54,7 @@
         button {
             cursor: pointer;
             margin-left: auto;
-            width: (40px/(360px/100))+0%;
+            width: (40px/(360px/100)) * 1%;
             height: 40px;
             position: relative;
             top: 0;
@@ -77,14 +75,11 @@
                 outline: 0;
             }
         }
-        i {
-
-        }
     }
 }
 
-.subContainer__category {
-    .subContainer__category-title {
+.sidebar__section--category {
+    .sidebar__section-title {
         position: relative;
         top: 0;
         left: 0;
@@ -121,8 +116,8 @@
     }
 }
 
-.subContainer__recentPosts {
-    .subContainer__recentPosts-title {
+.sidebar__section--recent {
+    .sidebar__section-title {
         position: relative;
         top: 0;
         left: 0;
@@ -136,7 +131,7 @@
             text-align: center;
         }
     }
-    .recentPosts-item {
+    .recent-post-list__item {
         margin-bottom: 20px;
         height: 77px;
 
@@ -145,28 +140,27 @@
                 text-decoration: none;
             }
         }
-        .recentPosts-wrap {
+        .recent-post-list__inner {
             display: flex;
         }
-        .recentPosts-media {
-            width: (125px/($subContainerWidthSize/100))+0%;
+        .recent-post-list__thumbnail {
+            width: (125px/($subContainerWidthSize/100)) * 1%;
         }
-        .recentPosts-content {
+        .recent-post-list__body {
             margin-left: auto;
-            width: (225px/($subContainerWidthSize/100))+0%;
-            .recentPosts-title {
+            width: (225px/($subContainerWidthSize/100)) * 1%;
+            .recent-post-list__title {
                 color: #000;
-                height: (57px/(77px/100))+0%;
+                height: (57px/(77px/100)) * 1%;
                 line-height: 1.4;
                 font-size: $px12;
                 @include text-truncate(12, 1.5, 3, #fff);
             }
         }
-        .recentPosts-meta {
+        .recent-post-list__meta {
             display: flex;
-            height: (20px/(77px/100))+0%;
-            .recentPosts-date,
-            .recentPosts-category {
+            height: (20px/(77px/100)) * 1%;
+            .recent-post-list__date {
                 display: inline-block;
                 padding: 0 10px;
                 height: 20px;
@@ -174,16 +168,14 @@
                 font-size: $px12;
                 color: #fff;
                 background: $baseColor;
-            }
-            .recentPosts-date {
                 margin-right: 10px;
             }
         }
     }
 }
 
-.subContainer__archivePosts {
-    .subContainer__archivePosts-title {
+.sidebar__section--archive {
+    .sidebar__section-title {
         position: relative;
         top: 0;
         left: 0;
@@ -197,7 +189,7 @@
             text-align: center;
         }
     }
-    .subContainer__archivePosts-list {
+    .sidebar__archive-list {
         width: 100%;
         height: 40px;
         line-height: 40px;
@@ -211,29 +203,20 @@
 
 
 
-
-
-
-
-
-
-
 // レスポンシブ
 @media #{$middle} {
-    .subContainer {
+    .sidebar {
         margin-left: auto;
         width: 100%;
     }
 
-    .subContainer__category,
-    .subContainer__recentPosts,
-    .subContainer__archivePosts {
+    .sidebar__section--category,
+    .sidebar__section--recent,
+    .sidebar__section--archive {
         margin-bottom: 40px;
     }
 
-    .subContainer__category-title,
-    .subContainer__recentPosts-title,
-    .subContainer__archivePosts-title {
+    .sidebar__section-title {
         display: flex;
         align-items: center;
         padding-left: 10px;
@@ -245,19 +228,19 @@
         box-sizing: border-box;
     }
 
-    .subContainer__articleSearch {
+    .sidebar__search {
         width: 100%;
         padding: 20px 10px;
         margin-bottom: 0;
         box-sizing: border-box;
         border-top: 1px solid $mainColor;
-        .articleSearchForm {
+        .search-form {
             display: flex;
             width: 100%;
             height: 40px;
             input[type="search"] {
                 padding: 0 20px;
-                width: (300px/(355px/100))+0%;
+                width: (300px/(355px/100)) * 1%;
                 border: 1px solid $mainColor;
                 border-radius: 40px;
                 box-sizing: border-box;
@@ -273,7 +256,7 @@
             button {
                 cursor: pointer;
                 margin-left: auto;
-                width: (40px/(355px/100))+0%;
+                width: (40px/(355px/100)) * 1%;
                 height: 40px;
                 position: relative;
                 top: 0;
@@ -294,14 +277,11 @@
                     outline: 0;
                 }
             }
-            i {
-
-            }
         }
     }
 
-    .subContainer__category {
-        .subContainer__category-title {
+    .sidebar__section--category {
+        .sidebar__section-title {
             position: relative;
             top: 0;
             left: 0;
@@ -342,8 +322,8 @@
         }
     }
 
-    .subContainer__recentPosts {
-        .subContainer__recentPosts-title {
+    .sidebar__section--recent {
+        .sidebar__section-title {
             position: relative;
             top: 0;
             left: 0;
@@ -357,7 +337,7 @@
                 text-align: center;
             }
         }
-        .recentPosts-item {
+        .recent-post-list__item {
             margin-bottom: 10px;
             height: 77px;
 
@@ -366,31 +346,30 @@
                     text-decoration: none;
                 }
             }
-            .recentPosts-wrap {
+            .recent-post-list__inner {
                 display: flex;
                 width: 100%;
                 box-sizing: border-box;
                 padding: 0 10px;
             }
-            .recentPosts-media {
-                width: (125px/($subContainerWidthSize/100))+0%;
+            .recent-post-list__thumbnail {
+                width: (125px/($subContainerWidthSize/100)) * 1%;
             }
-            .recentPosts-content {
+            .recent-post-list__body {
                 margin-left: auto;
-                width: (225px/($subContainerWidthSize/100))+0%;
-                .recentPosts-title {
+                width: (225px/($subContainerWidthSize/100)) * 1%;
+                .recent-post-list__title {
                     color: #000;
-                    height: (57px/(77px/100))+0%;
+                    height: (57px/(77px/100)) * 1%;
                     line-height: 1.4;
                     font-size: $px12;
                     @include text-truncate(12, 1.5, 3, #fff);
                 }
             }
-            .recentPosts-meta {
+            .recent-post-list__meta {
                 display: flex;
-                height: (20px/(77px/100))+0%;
-                .recentPosts-date,
-                .recentPosts-category {
+                height: (20px/(77px/100)) * 1%;
+                .recent-post-list__date {
                     display: inline-block;
                     padding: 0 10px;
                     height: 20px;
@@ -398,16 +377,14 @@
                     font-size: $px12;
                     color: #fff;
                     background: $baseColor;
-                }
-                .recentPosts-date {
                     margin-right: 10px;
                 }
             }
         }
     }
 
-    .subContainer__archivePosts {
-        .subContainer__archivePosts-title {
+    .sidebar__section--archive {
+        .sidebar__section-title {
             position: relative;
             top: 0;
             left: 0;
@@ -421,7 +398,7 @@
                 text-align: center;
             }
         }
-        .subContainer__archivePosts-list {
+        .sidebar__archive-list {
             padding: 0 10px;
             width: 100%;
             height: 40px;

@@ -56,7 +56,6 @@
     "imagemin-pngquant": "^6.0.0",
     "main-bower-files": "~2.9.0",
     "merge-stream": "^1.0.1",
-    "node-sass": "^4.9.3",
     "plumber": "~0.4.8",
     "prettier": "^1.14.3",
     "run-sequence": "1.1.2",

@@ -27,14 +27,14 @@
     width: $mainContainerWidth;
 
     // トップページ
-    .articleList {
+    .post-list {
         display: flex;
         flex-wrap: wrap;
         margin-bottom: 40px;
     }
-    .articleList-item {
+    .post-list__item {
         margin-bottom: 20px;
-        width: (390px/($mainContainerWidthSize/100))+0%;
+        width: (390px/($mainContainerWidthSize/100)) * 1%;
         position: relative;
         top: 0;
         left: 0;
@@ -44,7 +44,7 @@
         a {
             display: block;
             transition: all 0.1s ease-in;
-            .articleList-status {
+            .post-list__status {
                 transition: all 0.1s ease-in;
             }
             &:hover {
@@ -52,21 +52,21 @@
                 text-decoration: none;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                 transition: all 0.2s ease-in;
-                .articleList-status {
+                .post-list__status {
                     margin-top: -3px;
                     transition: all 0.25s ease-in;
                 }
             }
         }
-        .articleList-media {
+        .post-list__media {
             margin-bottom: 10px;
         }
-        .articleList-content {
-            .articleList-meta {
+        .post-list__content {
+            .post-list__meta {
                 display: flex;
                 margin-bottom: 10px;
-                .articleList-date,
-                .articleList-category {
+                .post-list__date,
+                .post-list__category {
                     display: inline-block;
                     padding: 0 10px;
                     height: 20px;
@@ -75,18 +75,18 @@
                     color: #fff;
                     background: $baseColor;
                 }
-                .articleList-date {
+                .post-list__date {
                     margin-right: 10px;
                 }
             }
-            .articleList-title {
+            .post-list__title {
                 line-height: 1.5;
                 font-size: $px16;
                 color: #000;
                 @include text-truncate(16, 1.5, 2, #fff);
             }
         }
-        .articleList-footer {
+        .post-list__footer {
             width: 100%;
             height: 20px;
             text-align: right;
@@ -94,7 +94,7 @@
             top: 10px;
             left: 0;
         }
-        .articleList-status {
+        .post-list__status {
             display: inline-block;
             padding: 0 10px;
             height: 20px;
@@ -104,13 +104,13 @@
             background: $accentColor;
         }
     }
-    .pageNation {
+    .pagination {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 100%;
         height: 40px;
-        .pageNation__prev-active {
+        .pagination__prev {
             a {
                 display: block;
                 margin-right: 20px;
@@ -127,7 +127,7 @@
                 }
             }
         }
-        .pageNation__next-active {
+        .pagination__next {
             a {
                 display: block;
                 padding: 0 20px;
@@ -143,7 +143,7 @@
                 }
             }
         }
-        .pageNation__prev {
+        .pagination__prev--disabled {
             margin-right: 20px;
             padding: 0 20px;
             line-height: 38px;
@@ -152,7 +152,7 @@
             background: #fff;
             border: 1px solid $baseColor;
         }
-        .pageNation__next {
+        .pagination__next--disabled {
             padding: 0 20px;
             line-height: 38px;
             color: $baseColor;
@@ -163,11 +163,12 @@
     }
 
     // 記事ページ
-    .breadCrumb {
+    .breadcrumb {
         margin-bottom: 20px;
-        .breadCrumb__list {
+        .breadcrumb__list {
             display: flex;
-            li {
+            li,
+            .breadcrumb__item {
                 margin-right: 1em;
                 position: relative;
                 top: 0;
@@ -204,35 +205,25 @@
                     }
                 }
             }
-            a {
-
-            }
-            span {
-
-            }
-            i {
-
-            }
         }
     }
     // 記事
-    .articlePost {
+    .post {
         // 記事のヘッダー
-        .articlePost__header {
+        .post__header {
             // h1見出し
-            .articlePost__header-title {
+            .post__title {
                 margin-bottom: 10px;
                 line-height: 1.5;
                 font-size: $px28;
             }
             // 記事ヘッダーのメタ要素
-            .articlePost__header-meta {
+            .post__meta {
                 display: flex;
                 justify-content: flex-end;
                 margin-bottom: 20px;
                 // 記事投稿日
-                .articlePost__date-write,
-                .articlePost__date-rewrite {
+                .post__date {
                     display: flex;
                     align-items: center;
                     color: #999;
@@ -256,7 +247,7 @@
                     }
                 }
                 // 記事編集日
-                .articlePost__date-rewrite {
+                .post__date--update {
                     margin-left: 20px;
                     &:before {
                         content: "\ea2e";
@@ -265,34 +256,34 @@
                 }
             }
             // ヘッダー内のメインビジュアル
-            .articlePost__header-media {
+            .post__thumbnail {
                 margin-bottom: 20px;
                 img {
                     width: 100%;
                 }
             }
             // ヘッダー内の冒頭文章
-            .articlePost__header-sentence {
+            .post__lead {
                 margin-bottom: 40px;
             }
             // 目次
-            .articlePost__toc {
+            .post__toc {
                 display: table;
                 margin-bottom: 40px;
                 padding: 10px;
                 border: 1px solid #999;
                 background: #f8f9fa;
                 // 目次タイトル
-                .articlePost__toc-title {
+                .post__toc-title {
                     margin-bottom: 10px;
                     text-align: center;
                 }
                 // 目次リスト
-                .articlePost__toc-list {
+                .post__toc-list {
                     counter-reset: item;
                     list-style-type: none;
                     padding-left: 0;
-                    .articlePost__toc-list {
+                    .post__toc-list {
                         padding-left: 1em;
                     }
                     li {
@@ -309,13 +300,13 @@
             }
         }
         // 記事内のセクション
-        .articlePost__section {
+        .post__section {
             margin-bottom: 40px;
-            > .articlePost__section {
+            > .post__section {
                 margin-top: 40px;
             }
             // 記事内のセクションタイトル（h2）
-            .articlePost__section-title {
+            .post__section-heading {
                 margin-bottom: 20px;
                 line-height: 1.5;
                 font-size: $px24;
@@ -331,7 +322,7 @@
                 }
             }
             // 記事内のセクションタイトル（h3）
-            .articlePost__section-subTitle {
+            .post__section-subheading {
                 display: inline-block;
                 margin-bottom: 20px;
                 padding: 2px 0 2px 23px;
@@ -353,10 +344,10 @@
                 }
             }
         }
-        .articlePost__footer {
+        .post__footer {
             margin-bottom: 40px;
             width: 100%;
-            .snsArea {
+            .sns-share {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -376,7 +367,7 @@
                     }
                 }
             }
-            .profileArea {
+            .profile-card {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
@@ -386,15 +377,15 @@
                 background: #fff;
                 border: 1px solid #eee;
                 box-sizing: border-box;;
-                .profileArea__photo {
+                .profile-card__photo {
                     width: 200px;
                 }
-                .profileArea__intro {
+                .profile-card__body {
                     width: 568px;
                 }
             }
             // プロフィール用定義リスト
-            .profileDefinition {
+            .profile-card__definition {
                 display: flex;
                 flex-wrap: wrap;
                 margin-bottom: 10px;
@@ -405,7 +396,7 @@
                     justify-content: flex-end;
                     margin-bottom: 5px;
                     width: 80px;
-                    width: (80px/(568px/100))+0%;
+                    width: (80px/(568px/100)) * 1%;
                     &:first-child {
                         align-items: flex-end;
                     }
@@ -418,10 +409,10 @@
                     align-items: center;
                     margin-bottom: 5px;
                     width: 488px;
-                    width: (488px/(568px/100))+0%;
+                    width: (488px/(568px/100)) * 1%;
                 }
             }
-            .profileSns {
+            .profile-card__sns {
                 display: flex;
                 li {
                     margin-right: 20px;
@@ -453,14 +444,14 @@
                 }
             }
         }
-        .articlePost__nav {
+        .post-nav {
             display: flex;
             justify-content: space-around;
             align-items: center;
             width: 100%;
             height: 100px;
             background: #ccc;
-            .articlePost__navPrev {
+            .post-nav__prev {
                 width: 50%;
                 height: 100%;
                 a {
@@ -471,7 +462,7 @@
                     height: 100%;
                 }
             }
-            .articlePost__navNext {
+            .post-nav__next {
                 width: 50%;
                 height: 100%;
                 a {
@@ -486,13 +477,12 @@
     }
 }
 
-.voiceBox__left,
-.voiceBox__right {
+.voice-box {
     margin: 1em 0 1.3em;
-    &.lastBox {
+    &--last {
         margin-bottom: 40px;
     }
-    .voiceBox__comment {
+    &__comment {
         border: 3px solid #eee;
         background-color: #fff;
         color: #444;
@@ -507,7 +497,7 @@
             }
         }
     }
-    .voiceBox__icon {
+    &__icon {
         width: 12%;
         text-align: center;
         img {
@@ -516,77 +506,75 @@
             padding: 10px;
             border: 4px solid #f5f5f5;
         }
-        .voiceBox__name {
+        .voice-box__name {
             font-size: 0.65em;
             padding: 0.4em 0;
         }
     }
-}
-
-.voiceBox__left {
-    display: flex;
-    .voiceBox__comment {
-        order: 2;
-        &:before{
-            content: '';
-            position: absolute;
-            border-right: 8px solid #eee;
-            border-bottom: 8px solid transparent;
-            border-top: 8px solid transparent;
-            top: 10px;
-            left: -11px;
+    &--left {
+        display: flex;
+        .voice-box__comment {
+            order: 2;
+            &:before{
+                content: '';
+                position: absolute;
+                border-right: 8px solid #eee;
+                border-bottom: 8px solid transparent;
+                border-top: 8px solid transparent;
+                top: 10px;
+                left: -11px;
+            }
+            &:after{
+                content: '';
+                position: absolute;
+                border-right: 10px solid #fff;
+                border-bottom: 8px solid transparent;
+                border-top: 8px solid transparent;
+                top: 10px;
+                left: -7px;
+            }
         }
-        &:after{
-            content: '';
-            position: absolute;
-            border-right: 10px solid #fff;
-            border-bottom: 8px solid transparent;
-            border-top: 8px solid transparent;
-            top: 10px;
-            left: -7px;
-        }
-    }
-    .voiceBox__icon {
-        order: 1;
-    }
-}
-
-.voiceBox__right {
-    display: flex;
-    .voiceBox__comment {
-        order: 1;
-        &:before{
-            content: '';
-            position: absolute;
-            border-left: 8px solid #eee;
-            border-bottom: 8px solid transparent;
-            border-top: 8px solid transparent;
-            top: 10px;
-            right: -11px;
-        }
-        &:after{
-            content: '';
-            position: absolute;
-            border-left: 10px solid #fff;
-            border-bottom: 8px solid transparent;
-            border-top: 8px solid transparent;
-            top: 10px;
-            right: -7px;
+        .voice-box__icon {
+            order: 1;
         }
     }
-    .voiceBox__icon {
-        order: 2;
+    &--right {
+        display: flex;
+        .voice-box__comment {
+            order: 1;
+            &:before{
+                content: '';
+                position: absolute;
+                border-left: 8px solid #eee;
+                border-bottom: 8px solid transparent;
+                border-top: 8px solid transparent;
+                top: 10px;
+                right: -11px;
+            }
+            &:after{
+                content: '';
+                position: absolute;
+                border-left: 10px solid #fff;
+                border-bottom: 8px solid transparent;
+                border-top: 8px solid transparent;
+                top: 10px;
+                right: -7px;
+            }
+        }
+        .voice-box__icon {
+            order: 2;
+        }
     }
 }
 
 // 箇条書きリスト
-.listStyle__disc {
+.list--disc {
     margin-bottom: 40px;
-    background: #fcfcfc;/*背景色*/
-    padding: 0.5em 0.5em 0.5em 2em;/*ボックス内の余白*/
+    background: #fcfcfc;
+    padding: 0.5em 0.5em 0.5em 2em;
     li {
-        line-height: 1.5; /*文の行高*/
-        padding: 0.5em 0 0.5em 1em; /*前後の文との余白*/
+        line-height: 1.5;
+        padding: 0.5em 0 0.5em 1em;
         position: relative;
         top: 0;
         left: 0;
@@ -606,7 +594,7 @@
 }
 
 // 定義リスト
-.explainBox {
+.definition-box {
     border: 1px solid #ddd;
     margin: 33px 0 40px;
     padding: 35px 33px 17px;
@@ -627,11 +615,11 @@
     }
 }
 
-//　順リスト
-.listStyle__order {
+// 順リスト
+.list--order {
     margin-bottom: 40px;
-    counter-reset:number; /*数字をリセット*/
-    list-style-type: none!important; /*数字を一旦消す*/
+    counter-reset:number;
+    list-style-type: none!important;
     padding: 0.8em;
     background: #f5faff;
     li {
@@ -640,11 +628,9 @@
         line-height: 1.5em;
         padding: 0.5em 0.5em 0.5em 30px;
         &:before {
-            /* 以下数字をつける */
             position: absolute;
             counter-increment: number;
             content: counter(number);
-            /*以下数字のデザイン変える*/
             display:inline-block;
             background: #5c9ee7;
             color: white;
@@ -657,7 +643,6 @@
             height: 25px;
             line-height: 25px;
             text-align:center;
-            /*以下 上下中央寄せのため*/
             top: 50%;
             transform: translateY(-50%);
         }
@@ -665,11 +650,11 @@
 }
 
 // ステップリスト
-.listStyle__step {
+.step-list {
     display: flex;
     margin-bottom: 40px;
     width: 100%;
-    li {
+    &__item {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -717,70 +702,72 @@
                 display: none;
             }
         }
-        &.listStyle__current {
+        &--current {
             font-weight: bold;
             font-size: $px16;
         }
     }
-    &.isStep__2 {
-        li {
-            width: (100 / 2)+%;
+    &--2 {
+        .step-list__item {
+            width: (100 / 2) * 1%;
         }
     }
-    &.isStep__3 {
-        li {
-            width: (100 / 3)+%;
+    &--3 {
+        .step-list__item {
+            width: (100 / 3) * 1%;
         }
     }
-    &.isStep__4 {
-        li {
-            width: (100 / 4)+%;
+    &--4 {
+        .step-list__item {
+            width: (100 / 4) * 1%;
         }
     }
-    &.isStep__5 {
-        li {
-            width: (100 / 5)+%;
+    &--5 {
+        .step-list__item {
+            width: (100 / 5) * 1%;
         }
     }
-    &.isStep__6 {
-        li {
-            width: (100 / 6)+%;
+    &--6 {
+        .step-list__item {
+            width: (100 / 6) * 1%;
         }
     }
 }
 
 // ボタンエリア
-.buttonTypeArea {
+.btn-area {
     display: flex;
     margin-bottom: 20px;
     width: 100%;
-    &.isLeft {
+    &--left {
         justify-content: flex-start;
     }
-    &.isCenter {
+    &--center {
         justify-content: center;
     }
-    &.isRight {
+    &--right {
         justify-content: flex-end;
     }
 }
 
 // ボタン
-.buttonType__01 {
+.btn {
     display: inline-block;
     padding: 15px 30px;
     line-height: 1.2;
-    color: #fff;
     font-size: $px18;
     text-decoration: none;
     text-align: center;
-    background: $accentColor;
     border-radius: 10px;
-    &:hover {
-        opacity: 0.7;
-        text-decoration: none;
+    &--primary {
+        color: #fff;
+        background: $accentColor;
+        &:hover {
+            opacity: 0.7;
+            text-decoration: none;
+        }
     }
-    &.newTab[target=_blank] {
+    &.link--external[target=_blank] {
         display: inline-block;
         padding: 15px 30px;
         position: relative;
@@ -795,8 +782,8 @@
     }
 }
 
-// 別タブアイコン
-a.newTab[target=_blank] {
+// 外部リンクアイコン
+a.link--external[target=_blank] {
     padding: 0 20px 0 0;
     position: relative;
     top: 0;
@@ -809,70 +796,68 @@ a.newTab[target=_blank] {
 }
 
 // イメージエリア
-.imageArea {
+.img-area {
     display: flex;
     margin-bottom: 40px;
-    &.isLeft {
+    &--left {
         justify-content: flex-start;
     }
-    &.isCenter {
+    &--center {
         justify-content: center;
     }
-    &.isRight {
+    &--right {
         justify-content: flex-end;
     }
 }
 
 // 2カラム
-.column__2 {
+.col--2 {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     * {
         display: flex;
         justify-content: center;
-        width: (100 / 2)+%;
+        width: (100 / 2) * 1%;
     }
 }
 
 // テキスト＋画像の2カラム
-.textPhoto2column {
+.media-col {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    .textPhoto2column__photoLeft {
+    &__image--left {
         order: 1;
-        width: (200px/(800px/100))+0%;
+        width: (200px/(800px/100)) * 1%;
         img {
             width: 100%;
         }
     }
-    .textPhoto2column__textRight {
+    &__text--right {
         order: 2;
-        width: (580px/(800px/100))+0%;
+        width: (580px/(800px/100)) * 1%;
     }
-    .textPhoto2column__textLeft {
+    &__text--left {
         order: 1;
-        width: (580px/(800px/100))+0%;
+        width: (580px/(800px/100)) * 1%;
     }
-    .textPhoto2column__photoRight {
+    &__image--right {
         order: 2;
-        width: (200px/(800px/100))+0%;
+        width: (200px/(800px/100)) * 1%;
         img {
             width: 100%;
         }
     }
 }
 
-
-
-
-
-
-
-
-
-
+pre {
+    overflow: auto;
+    padding: 1em;
+    background: #696969;
+    color: #fff;
+    box-shadow: 0 6px 8px rgba(0,0,0,.5);
+}
 
 
 // レスポンシブ
@@ -891,14 +876,14 @@ a.newTab[target=_blank] {
         box-sizing: border-box;
 
         // トップページ
-        .articleList {
+        .post-list {
             display: flex;
             flex-wrap: wrap;
             margin-bottom: 20px;
         }
-        .articleList-item {
+        .post-list__item {
             margin-bottom: 20px;
-            width: (390px/($mainContainerWidthSize/100))+0%;
+            width: (390px/($mainContainerWidthSize/100)) * 1%;
             position: relative;
             top: 0;
             left: 0;
@@ -915,15 +900,15 @@ a.newTab[target=_blank] {
                     transition: all 0.2s ease-in;
                 }
             }
-            .articleList-media {
+            .post-list__media {
                 margin-bottom: 10px;
             }
-            .articleList-content {
-                .articleList-meta {
+            .post-list__content {
+                .post-list__meta {
                     display: flex;
                     margin-bottom: 10px;
-                    .articleList-date,
-                    .articleList-category {
+                    .post-list__date,
+                    .post-list__category {
                         display: inline-block;
                         padding: 0 10px;
                         height: 20px;
@@ -932,18 +917,18 @@ a.newTab[target=_blank] {
                         color: #fff;
                         background: $baseColor;
                     }
-                    .articleList-date {
+                    .post-list__date {
                         margin-right: 10px;
                     }
                 }
-                .articleList-title {
+                .post-list__title {
                     line-height: 1.5;
                     font-size: $px16;
                     color: #000;
                     @include text-truncate(16, 1.5, 2, #fff);
                 }
             }
-            .articleList-footer {
+            .post-list__footer {
                 width: 100%;
                 height: 20px;
                 text-align: right;
@@ -951,7 +936,7 @@ a.newTab[target=_blank] {
                 top: 10px;
                 left: 0;
             }
-            .articleList-status {
+            .post-list__status {
                 display: inline-block;
                 padding: 0 10px;
                 height: 20px;
@@ -961,13 +946,13 @@ a.newTab[target=_blank] {
                 background: $accentColor;
             }
         }
-        .pageNation {
+        .pagination {
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100%;
             height: 40px;
-            .pageNation__prev-active {
+            .pagination__prev {
                 a {
                     display: block;
                     margin-right: 20px;
@@ -984,7 +969,7 @@ a.newTab[target=_blank] {
                     }
                 }
             }
-            .pageNation__next-active {
+            .pagination__next {
                 a {
                     display: block;
                     padding: 0 20px;
@@ -1000,7 +985,7 @@ a.newTab[target=_blank] {
                     }
                 }
             }
-            .pageNation__prev {
+            .pagination__prev--disabled {
                 margin-right: 20px;
                 padding: 0 20px;
                 line-height: 38px;
@@ -1009,7 +994,7 @@ a.newTab[target=_blank] {
                 background: #fff;
                 border: 1px solid $baseColor;
             }
-            .pageNation__next {
+            .pagination__next--disabled {
                 padding: 0 20px;
                 line-height: 38px;
                 color: $baseColor;
@@ -1020,11 +1005,12 @@ a.newTab[target=_blank] {
         }
 
         // 記事ページ
-        .breadCrumb {
+        .breadcrumb {
             margin-bottom: 20px;
-            .breadCrumb__list {
+            .breadcrumb__list {
                 display: flex;
-                li {
+                li,
+                .breadcrumb__item {
                     margin-right: 1em;
                     position: relative;
                     top: 0;
@@ -1061,35 +1047,24 @@ a.newTab[target=_blank] {
                         }
                     }
                 }
-                a {
-
-                }
-                span {
-
-                }
-                i {
-
-                }
             }
         }
         // 記事
-        .articlePost {
+        .post {
             // 記事のヘッダー
-            .articlePost__header {
+            .post__header {
                 // h1見出し
-                .articlePost__header-title {
+                .post__title {
                     margin-bottom: 10px;
                     line-height: 1.5;
                     font-size: $px28;
                 }
                 // 記事ヘッダーのメタ要素
-                .articlePost__header-meta {
+                .post__meta {
                     display: flex;
                     justify-content: flex-end;
                     margin-bottom: 20px;
-                    // 記事投稿日
-                    .articlePost__date-write,
-                    .articlePost__date-rewrite {
+                    .post__date {
                         display: flex;
                         align-items: center;
                         color: #999;
@@ -1112,8 +1087,7 @@ a.newTab[target=_blank] {
                             background-color: $mainColor;
                         }
                     }
-                    // 記事編集日
-                    .articlePost__date-rewrite {
+                    .post__date--update {
                         margin-left: 20px;
                         &:before {
                             content: "\ea2e";
@@ -1121,35 +1095,30 @@ a.newTab[target=_blank] {
                         }
                     }
                 }
-                // ヘッダー内のメインビジュアル
-                .articlePost__header-media {
+                .post__thumbnail {
                     margin-bottom: 20px;
                     img {
                         width: 100%;
                     }
                 }
-                // ヘッダー内の冒頭文章
-                .articlePost__header-sentence {
+                .post__lead {
                     margin-bottom: 40px;
                 }
-                // 目次
-                .articlePost__toc {
+                .post__toc {
                     display: table;
                     margin-bottom: 40px;
                     padding: 10px;
                     border: 1px solid #999;
                     background: #f8f9fa;
-                    // 目次タイトル
-                    .articlePost__toc-title {
+                    .post__toc-title {
                         margin-bottom: 10px;
                         text-align: center;
                     }
-                    // 目次リスト
-                    .articlePost__toc-list {
+                    .post__toc-list {
                         counter-reset: item;
                         list-style-type: none;
                         padding-left: 0;
-                        .articlePost__toc-list {
+                        .post__toc-list {
                             padding-left: 1em;
                         }
                         li {
@@ -1165,14 +1134,12 @@ a.newTab[target=_blank] {
                     }
                 }
             }
-            // 記事内のセクション
-            .articlePost__section {
+            .post__section {
                 margin-bottom: 40px;
-                > .articlePost__section {
+                > .post__section {
                     margin-top: 40px;
                 }
-                // 記事内のセクションタイトル（h2）
-                .articlePost__section-title {
+                .post__section-heading {
                     margin-bottom: 20px;
                     line-height: 1.5;
                     font-size: $px24;
@@ -1187,8 +1154,7 @@ a.newTab[target=_blank] {
                         width: 20%;
                     }
                 }
-                // 記事内のセクションタイトル（h3）
-                .articlePost__section-subTitle {
+                .post__section-subheading {
                     display: inline-block;
                     margin-bottom: 20px;
                     padding: 2px 0 2px 23px;
@@ -1210,10 +1176,10 @@ a.newTab[target=_blank] {
                     }
                 }
             }
-            .articlePost__footer {
+            .post__footer {
                 margin-bottom: 40px;
                 width: 100%;
-                .snsArea {
+                .sns-share {
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -1233,7 +1199,7 @@ a.newTab[target=_blank] {
                         }
                     }
                 }
-                .profileArea {
+                .profile-card {
                     display: flex;
                     justify-content: space-between;
                     flex-direction: column;
@@ -1244,16 +1210,15 @@ a.newTab[target=_blank] {
                     background: #fff;
                     border: 1px solid #eee;
                     box-sizing: border-box;;
-                    .profileArea__photo {
+                    .profile-card__photo {
                         width: 200px;
                         margin-bottom: 10px;
                     }
-                    .profileArea__intro {
+                    .profile-card__body {
                         width: 100%;
                     }
                 }
-                // プロフィール用定義リスト
-                .profileDefinition {
+                .profile-card__definition {
                     display: flex;
                     flex-wrap: wrap;
                     margin-bottom: 10px;
@@ -1263,7 +1228,7 @@ a.newTab[target=_blank] {
                         align-items: center;
                         justify-content: flex-end;
                         margin-bottom: 5px;
-                        width: (100px/(333px/100))+0%;
+                        width: (100px/(333px/100)) * 1%;
                         &:first-child {
                             align-items: flex-end;
                         }
@@ -1275,10 +1240,10 @@ a.newTab[target=_blank] {
                         display: flex;
                         align-items: center;
                         margin-bottom: 5px;
-                        width: (233px/(333px/100))+0%;
+                        width: (233px/(333px/100)) * 1%;
                     }
                 }
-                .profileSns {
+                .profile-card__sns {
                     display: flex;
                     li {
                         margin-right: 0;
@@ -1310,14 +1275,14 @@ a.newTab[target=_blank] {
                     }
                 }
             }
-            .articlePost__nav {
+            .post-nav {
                 display: flex;
                 justify-content: space-around;
                 align-items: center;
                 width: 100%;
                 height: 100px;
                 background: #ccc;
-                .articlePost__navPrev {
+                .post-nav__prev {
                     width: 50%;
                     height: 100%;
                     a {
@@ -1328,7 +1293,7 @@ a.newTab[target=_blank] {
                         height: 100%;
                     }
                 }
-                .articlePost__navNext {
+                .post-nav__next {
                     width: 50%;
                     height: 100%;
                     a {
@@ -1343,13 +1308,12 @@ a.newTab[target=_blank] {
         }
     }
 
-    .voiceBox__left,
-    .voiceBox__right {
+    .voice-box {
         margin: 1em 0 1.3em;
-        &.lastBox {
+        &--last {
             margin-bottom: 40px;
         }
-        .voiceBox__comment {
+        &__comment {
             border: 3px solid #eee;
             background-color: #fff;
             color: #444;
@@ -1364,7 +1328,7 @@ a.newTab[target=_blank] {
                 }
             }
         }
-        .voiceBox__icon {
+        &__icon {
             width: 12%;
             text-align: center;
             img {
@@ -1373,77 +1337,75 @@ a.newTab[target=_blank] {
                 padding: 10px;
                 border: 4px solid #f5f5f5;
             }
-            .voiceBox__name {
+            .voice-box__name {
                 font-size: 0.65em;
                 padding: 0.4em 0;
             }
         }
-    }
-
-    .voiceBox__left {
-        display: flex;
-        .voiceBox__comment {
-            order: 2;
-            &:before{
-                content: '';
-                position: absolute;
-                border-right: 8px solid #eee;
-                border-bottom: 8px solid transparent;
-                border-top: 8px solid transparent;
-                top: 10px;
-                left: -11px;
+        &--left {
+            display: flex;
+            .voice-box__comment {
+                order: 2;
+                &:before{
+                    content: '';
+                    position: absolute;
+                    border-right: 8px solid #eee;
+                    border-bottom: 8px solid transparent;
+                    border-top: 8px solid transparent;
+                    top: 10px;
+                    left: -11px;
+                }
+                &:after{
+                    content: '';
+                    position: absolute;
+                    border-right: 10px solid #fff;
+                    border-bottom: 8px solid transparent;
+                    border-top: 8px solid transparent;
+                    top: 10px;
+                    left: -7px;
+                }
             }
-            &:after{
-                content: '';
-                position: absolute;
-                border-right: 10px solid #fff;
-                border-bottom: 8px solid transparent;
-                border-top: 8px solid transparent;
-                top: 10px;
-                left: -7px;
-            }
-        }
-        .voiceBox__icon {
-            order: 1;
-        }
-    }
-
-    .voiceBox__right {
-        display: flex;
-        .voiceBox__comment {
-            order: 1;
-            &:before{
-                content: '';
-                position: absolute;
-                border-left: 8px solid #eee;
-                border-bottom: 8px solid transparent;
-                border-top: 8px solid transparent;
-                top: 10px;
-                right: -11px;
-            }
-            &:after{
-                content: '';
-                position: absolute;
-                border-left: 10px solid #fff;
-                border-bottom: 8px solid transparent;
-                border-top: 8px solid transparent;
-                top: 10px;
-                right: -7px;
+            .voice-box__icon {
+                order: 1;
             }
         }
-        .voiceBox__icon {
-            order: 2;
+        &--right {
+            display: flex;
+            .voice-box__comment {
+                order: 1;
+                &:before{
+                    content: '';
+                    position: absolute;
+                    border-left: 8px solid #eee;
+                    border-bottom: 8px solid transparent;
+                    border-top: 8px solid transparent;
+                    top: 10px;
+                    right: -11px;
+                }
+                &:after{
+                    content: '';
+                    position: absolute;
+                    border-left: 10px solid #fff;
+                    border-bottom: 8px solid transparent;
+                    border-top: 8px solid transparent;
+                    top: 10px;
+                    right: -7px;
+                }
+            }
+            .voice-box__icon {
+                order: 2;
+            }
         }
     }
 
     // 箇条書きリスト
-    .listStyle__disc {
+    .list--disc {
         margin-bottom: 40px;
-        background: #fcfcfc;/*背景色*/
-        padding: 0.5em 0.5em 0.5em 2em;/*ボックス内の余白*/
+        background: #fcfcfc;
+        padding: 0.5em 0.5em 0.5em 2em;
         li {
-            line-height: 1.5; /*文の行高*/
-            padding: 0.5em 0 0.5em 1em; /*前後の文との余白*/
+            line-height: 1.5;
+            padding: 0.5em 0 0.5em 1em;
             position: relative;
             top: 0;
             left: 0;
@@ -1463,7 +1425,7 @@ a.newTab[target=_blank] {
     }
 
     // 定義リスト
-    .explainBox {
+    .definition-box {
         border: 1px solid #ddd;
         margin: 33px 0 40px;
         padding: 35px 33px 17px;
@@ -1484,11 +1446,11 @@ a.newTab[target=_blank] {
         }
     }
 
-    //　順リスト
-    .listStyle__order {
+    // 順リスト
+    .list--order {
         margin-bottom: 40px;
-        counter-reset:number; /*数字をリセット*/
-        list-style-type: none!important; /*数字を一旦消す*/
+        counter-reset:number;
+        list-style-type: none!important;
         padding: 0.8em;
         background: #f5faff;
         li {
@@ -1497,11 +1459,9 @@ a.newTab[target=_blank] {
             line-height: 1.5em;
             padding: 0.5em 0.5em 0.5em 30px;
             &:before {
-                /* 以下数字をつける */
                 position: absolute;
                 counter-increment: number;
                 content: counter(number);
-                /*以下数字のデザイン変える*/
                 display:inline-block;
                 background: #5c9ee7;
                 color: white;
@@ -1514,7 +1474,6 @@ a.newTab[target=_blank] {
                 height: 25px;
                 line-height: 25px;
                 text-align:center;
-                /*以下 上下中央寄せのため*/
                 top: 50%;
                 transform: translateY(-50%);
             }
@@ -1522,11 +1481,11 @@ a.newTab[target=_blank] {
     }
 
     // ステップリスト
-    .listStyle__step {
+    .step-list {
         display: flex;
         margin-bottom: 40px;
         width: 100%;
-        li {
+        &__item {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1574,70 +1533,72 @@ a.newTab[target=_blank] {
                     display: none;
                 }
             }
-            &.listStyle__current {
+            &--current {
                 font-weight: bold;
                 font-size: $px16;
             }
         }
-        &.isStep__2 {
-            li {
-                width: (100 / 2)+%;
+        &--2 {
+            .step-list__item {
+                width: (100 / 2) * 1%;
             }
         }
-        &.isStep__3 {
-            li {
-                width: (100 / 3)+%;
+        &--3 {
+            .step-list__item {
+                width: (100 / 3) * 1%;
             }
         }
-        &.isStep__4 {
-            li {
-                width: (100 / 4)+%;
+        &--4 {
+            .step-list__item {
+                width: (100 / 4) * 1%;
             }
         }
-        &.isStep__5 {
-            li {
-                width: (100 / 5)+%;
+        &--5 {
+            .step-list__item {
+                width: (100 / 5) * 1%;
             }
         }
-        &.isStep__6 {
-            li {
-                width: (100 / 6)+%;
+        &--6 {
+            .step-list__item {
+                width: (100 / 6) * 1%;
             }
         }
     }
 
     // ボタンエリア
-    .buttonTypeArea {
+    .btn-area {
         display: flex;
         margin-bottom: 20px;
         width: 100%;
-        &.isLeft {
+        &--left {
             justify-content: flex-start;
         }
-        &.isCenter {
+        &--center {
             justify-content: center;
         }
-        &.isRight {
+        &--right {
             justify-content: flex-end;
         }
     }
 
     // ボタン
-    .buttonType__01 {
+    .btn {
         display: inline-block;
         padding: 15px 30px;
         line-height: 1.2;
-        color: #fff;
         font-size: $px18;
         text-decoration: none;
         text-align: center;
-        background: $accentColor;
         border-radius: 10px;
-        &:hover {
-            opacity: 0.7;
-            text-decoration: none;
+        &--primary {
+            color: #fff;
+            background: $accentColor;
+            &:hover {
+                opacity: 0.7;
+                text-decoration: none;
+            }
         }
-        &.newTab[target=_blank] {
+        &.link--external[target=_blank] {
             display: inline-block;
             padding: 15px 30px;
             position: relative;
@@ -1652,8 +1613,8 @@ a.newTab[target=_blank] {
         }
     }
 
-    // 別タブアイコン
-    a.newTab[target=_blank] {
+    // 外部リンクアイコン
+    a.link--external[target=_blank] {
         padding: 0 20px 0 0;
         position: relative;
         top: 0;
@@ -1666,43 +1627,43 @@ a.newTab[target=_blank] {
     }
 
     // イメージエリア
-    .imageArea {
+    .img-area {
         display: flex;
         margin-bottom: 40px;
         img {
             width: 100%;
             height: 100%;
         }
-        &.isLeft {
+        &--left {
             justify-content: flex-start;
         }
-        &.isCenter {
+        &--center {
             justify-content: center;
         }
-        &.isRight {
+        &--right {
             justify-content: flex-end;
         }
     }
 
     // 2カラム
-    .column__2 {
+    .col--2 {
         display: flex;
         flex-wrap: wrap;
         width: 100%;
         * {
             display: flex;
             justify-content: center;
-            width: (100 / 2)+%;
+            width: (100 / 2) * 1%;
         }
     }
 
     // テキスト＋画像の2カラム
-    .textPhoto2column {
+    .media-col {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         width: 100%;
-        .textPhoto2column__photoLeft {
+        &__image--left {
             order: 1;
             width: 100%;
             margin-bottom: 10px;
@@ -1711,15 +1672,15 @@ a.newTab[target=_blank] {
                 height: 100%;
             }
         }
-        .textPhoto2column__textRight {
+        &__text--right {
             order: 2;
             width: 100%;
         }
-        .textPhoto2column__textLeft {
+        &__text--left {
             order: 2;
             width: 100%;
         }
-        .textPhoto2column__photoRight {
+        &__image--right {
             order: 1;
             width: 100%;
             margin-bottom: 10px;

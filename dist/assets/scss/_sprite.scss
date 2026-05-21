@@ -1,0 +1,213 @@
+/*
+SCSS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: $icon-home-width;
+}
+
+The large array-like variables contain all information about a single icon
+$icon-home: x y offset_x offset_y width height total_width total_height image_path;
+
+At the bottom of this section, we provide information about the spritesheet itself
+$spritesheet: width height image $spritesheet-sprites;
+*/
+$sprite-icon-site-logo-name: "sprite-icon_siteLogo";
+$sprite-icon-site-logo-x: 0px;
+$sprite-icon-site-logo-y: 0px;
+$sprite-icon-site-logo-offset-x: 0px;
+$sprite-icon-site-logo-offset-y: 0px;
+$sprite-icon-site-logo-width: 40px;
+$sprite-icon-site-logo-height: 42px;
+$sprite-icon-site-logo-total-width: 108px;
+$sprite-icon-site-logo-total-height: 42px;
+$sprite-icon-site-logo-image: "/assets/images/sprite.png?v=1558419351411";
+$sprite-icon-site-logo: (0px, 0px, 0px, 0px, 40px, 42px, 108px, 42px, "../images/sprite.png?v=1558419351411", "sprite-icon_siteLogo");
+$sprite-icon-twitter-name: "sprite-icon_twitter";
+$sprite-icon-twitter-x: 50px;
+$sprite-icon-twitter-y: 0px;
+$sprite-icon-twitter-offset-x: -50px;
+$sprite-icon-twitter-offset-y: 0px;
+$sprite-icon-twitter-width: 24px;
+$sprite-icon-twitter-height: 24px;
+$sprite-icon-twitter-total-width: 108px;
+$sprite-icon-twitter-total-height: 42px;
+$sprite-icon-twitter-image: "/assets/images/sprite.png?v=1558419351411";
+$sprite-icon-twitter: (50px, 0px, -50px, 0px, 24px, 24px, 108px, 42px, "/assets/images/sprite.png?v=1558419351411", "sprite-icon_twitter");
+$sprite-icon-youtube-name: "sprite-icon_youtube";
+$sprite-icon-youtube-x: 84px;
+$sprite-icon-youtube-y: 0px;
+$sprite-icon-youtube-offset-x: -84px;
+$sprite-icon-youtube-offset-y: 0px;
+$sprite-icon-youtube-width: 24px;
+$sprite-icon-youtube-height: 24px;
+$sprite-icon-youtube-total-width: 108px;
+$sprite-icon-youtube-total-height: 42px;
+$sprite-icon-youtube-image: "/assets/images/sprite.png?v=1558419351411";
+$sprite-icon-youtube: (84px, 0px, -84px, 0px, 24px, 24px, 108px, 42px, "/assets/images/sprite.png?v=1558419351411", "sprite-icon_youtube");
+$sprite-icon-site-logo-2x-name: "sprite-icon_siteLogo-2x";
+$sprite-icon-site-logo-2x-x: 0px;
+$sprite-icon-site-logo-2x-y: 0px;
+$sprite-icon-site-logo-2x-offset-x: 0px;
+$sprite-icon-site-logo-2x-offset-y: 0px;
+$sprite-icon-site-logo-2x-width: 80px;
+$sprite-icon-site-logo-2x-height: 84px;
+$sprite-icon-site-logo-2x-total-width: 216px;
+$sprite-icon-site-logo-2x-total-height: 84px;
+$sprite-icon-site-logo-2x-image: "/assets/images/sprite-2x.png?v=1558419351411";
+$sprite-icon-site-logo-2x: (0px, 0px, 0px, 0px, 80px, 84px, 216px, 84px, "../images/sprite-2x.png?v=1558419351411", "sprite-icon_siteLogo-2x");
+$sprite-icon-twitter-2x-name: "sprite-icon_twitter-2x";
+$sprite-icon-twitter-2x-x: 100px;
+$sprite-icon-twitter-2x-y: 0px;
+$sprite-icon-twitter-2x-offset-x: -100px;
+$sprite-icon-twitter-2x-offset-y: 0px;
+$sprite-icon-twitter-2x-width: 48px;
+$sprite-icon-twitter-2x-height: 48px;
+$sprite-icon-twitter-2x-total-width: 216px;
+$sprite-icon-twitter-2x-total-height: 84px;
+$sprite-icon-twitter-2x-image: "/assets/images/sprite-2x.png?v=1558419351411";
+$sprite-icon-twitter-2x: (100px, 0px, -100px, 0px, 48px, 48px, 216px, 84px, "/assets/images/sprite-2x.png?v=1558419351411", "sprite-icon_twitter-2x");
+$sprite-icon-youtube-2x-name: "sprite-icon_youtube-2x";
+$sprite-icon-youtube-2x-x: 168px;
+$sprite-icon-youtube-2x-y: 0px;
+$sprite-icon-youtube-2x-offset-x: -168px;
+$sprite-icon-youtube-2x-offset-y: 0px;
+$sprite-icon-youtube-2x-width: 48px;
+$sprite-icon-youtube-2x-height: 48px;
+$sprite-icon-youtube-2x-total-width: 216px;
+$sprite-icon-youtube-2x-total-height: 84px;
+$sprite-icon-youtube-2x-image: "/assets/images/sprite-2x.png?v=1558419351411";
+$sprite-icon-youtube-2x: (168px, 0px, -168px, 0px, 48px, 48px, 216px, 84px, "/assets/images/sprite-2x.png?v=1558419351411", "sprite-icon_youtube-2x");
+$spritesheet-width: 108px;
+$spritesheet-height: 42px;
+$spritesheet-image: "/assets/images/sprite.png?v=1558419351411";
+$spritesheet-sprites: ($sprite-icon-site-logo, $sprite-icon-twitter, $sprite-icon-youtube);
+$spritesheet: (108px, 42px, "/assets/images/sprite.png?v=1558419351411", $spritesheet-sprites);
+$retina-spritesheet-width: 216px;
+$retina-spritesheet-height: 84px;
+$retina-spritesheet-image: "/assets/images/sprite-2x.png?v=1558419351411";
+$retina-spritesheet-sprites: ($sprite-icon-site-logo-2x, $sprite-icon-twitter-2x, $sprite-icon-youtube-2x);
+$retina-spritesheet: (216px, 84px, "/assets/images/sprite-2x.png?v=1558419351411", $retina-spritesheet-sprites);
+
+/*
+These "retina group" variables are mappings for the naming and pairing of normal and retina sprites.
+
+The list formatted variables are intended for mixins like `retina-sprite` and `retina-sprites`.
+*/
+$sprite-icon-site-logo-group-name: "sprite-icon_siteLogo";
+$sprite-icon-site-logo-group: ("sprite-icon_siteLogo", $sprite-icon-site-logo, $sprite-icon-site-logo-2x);
+$sprite-icon-twitter-group-name: "sprite-icon_twitter";
+$sprite-icon-twitter-group: ("sprite-icon_twitter", $sprite-icon-twitter, $sprite-icon-twitter-2x);
+$sprite-icon-youtube-group-name: "sprite-icon_youtube";
+$sprite-icon-youtube-group: ("sprite-icon_youtube", $sprite-icon-youtube, $sprite-icon-youtube-2x);
+$retina-groups: ($sprite-icon-site-logo-group, $sprite-icon-twitter-group, $sprite-icon-youtube-group);
+
+/*
+The provided mixins are intended to be used with the array-like variables
+
+.icon-home {
+  @include sprite-width($icon-home);
+}
+
+.icon-email {
+  @include sprite($icon-email);
+}
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+@mixin sprite-width($sprite) {
+    width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+    height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+    $sprite-offset-x: nth($sprite, 3);
+    $sprite-offset-y: nth($sprite, 4);
+    background-position: $sprite-offset-x $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+    $sprite-image: nth($sprite, 9);
+    background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+    @include sprite-image($sprite);
+    @include sprite-position($sprite);
+    @include sprite-width($sprite);
+    @include sprite-height($sprite);
+}
+
+/*
+The `retina-sprite` mixin sets up rules and a media query for a sprite/retina sprite.
+  It should be used with a "retina group" variable.
+
+The media query is from CSS Tricks: https://css-tricks.com/snippets/css/retina-display-media-query/
+
+$icon-home-group: ('icon-home', $icon-home, $icon-home-2x, );
+
+.icon-home {
+  @include retina-sprite($icon-home-group);
+}
+*/
+@mixin sprite-background-size($sprite) {
+    $sprite-total-width: nth($sprite, 7);
+    $sprite-total-height: nth($sprite, 8);
+    background-size: $sprite-total-width $sprite-total-height;
+}
+
+@mixin retina-sprite($retina-group) {
+    $normal-sprite: nth($retina-group, 2);
+    $retina-sprite: nth($retina-group, 3);
+    @include sprite($normal-sprite);
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        @include sprite-image($retina-sprite);
+        @include sprite-background-size($normal-sprite);
+    }
+}
+
+/*
+The `sprites` mixin generates identical output to the CSS template
+  but can be overridden inside of SCSS
+
+@include sprites($spritesheet-sprites);
+*/
+@mixin sprites($sprites) {
+    @each $sprite in $sprites {
+        $sprite-name: nth($sprite, 10);
+        .#{$sprite-name} {
+            @include sprite($sprite);
+        }
+    }
+}
+
+/*
+The `retina-sprites` mixin generates a CSS rule and media query for retina groups
+  This yields the same output as CSS retina template but can be overridden in SCSS
+
+@include retina-sprites($retina-groups);
+*/
+@mixin retina-sprites($retina-groups) {
+    @each $retina-group in $retina-groups {
+        $sprite-name: nth($retina-group, 1);
+        .#{$sprite-name} {
+            @include retina-sprite($retina-group);
+        }
+    }
+}

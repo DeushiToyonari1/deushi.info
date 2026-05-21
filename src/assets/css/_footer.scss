@@ -6,11 +6,11 @@
 @import "mixin";// ミックスイン
 @import "ptp-14";// フォントサイズ指定
 
-.siteFooter {
+.site-footer {
     width: 100%;
     height: 80px;
     background: $mainColor;
-    .siteFooter__footerLink {
+    .site-footer__link {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -24,7 +24,7 @@
             }
         }
     }
-    .siteFooter__copyright {
+    .site-footer__copyright {
         display: flex;
         justify-content: center;
         align-items: center;

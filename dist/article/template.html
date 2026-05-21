@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
-    <meta meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="robots" content="<?php echo $ROBOTS; ?>">
@@ -48,45 +48,46 @@
     <?php include_once("../include/siteHeader.php"); ?>
     <div class="container">
         <main class="mainContainer">
-            <nav class="breadCrumb">
-                <ol class="breadCrumb__list">
-                    <li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
-                        <a href="<?php echo $DOCUMENT_ROOT_URL; ?>" itemprop="url">
-                            <span itemprop="title">ホーム</span>
+            <nav class="breadcrumb" aria-label="パンくずリスト">
+                <ol class="breadcrumb__list" itemscope itemtype="https://schema.org/BreadcrumbList">
+                    <li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a href="<?php echo $DOCUMENT_ROOT_URL; ?>" itemprop="item">
+                            <span itemprop="name">ホーム</span>
                         </a>
-                        <i aria-hidden="true"></i>
+                        <meta itemprop="position" content="1">
                     </li>
-                    <li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
-                        <a href="<?php echo $DOCUMENT_ROOT_URL; ?>" itemprop="url">
-                            <span itemprop="title">趣味</span>
+                    <li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a href="<?php echo $DOCUMENT_ROOT_URL; ?>" itemprop="item">
+                            <span itemprop="name">趣味</span>
                         </a>
-                        <i aria-hidden="true"></i>
+                        <meta itemprop="position" content="2">
                     </li>
-                    <li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
-                        <a href="<?php echo $DOCUMENT_ROOT_URL; ?>" itemprop="url">
-                            <span itemprop="title">記事タイトル</span>
+                    <li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a href="<?php echo $DOCUMENT_ROOT_URL; ?>" itemprop="item">
+                            <span itemprop="name">記事タイトル</span>
                         </a>
+                        <meta itemprop="position" content="3">
                     </li>
                 </ol>
             </nav>
-            <article class="articlePost">
-                <header class="articlePost__header">
-                    <h1 class="articlePost__header-title">h1それも今とうとうその永続ようというもののために行きですた。しかるに場合に意味帰りはよほどその解釈ででまでが行きがみるでからは相違立てるんないから、まだにも申し上げたなました。</h1>
-                    <div class="articlePost__header-meta">
-                        <time datetime="2019-01-01" class="articlePost__date-write">2019.01.01</time>
-                        <time datetime="2019-01-01" class="articlePost__date-rewrite">2019.01.02</time>
+            <article class="post">
+                <header class="post__header">
+                    <h1 class="post__title">h1それも今とうとうその永続ようというもののために行きですた。しかるに場合に意味帰りはよほどその解釈ででまでが行きがみるでからは相違立てるんないから、まだにも申し上げたなました。</h1>
+                    <div class="post__meta">
+                        <time datetime="2019-01-01" class="post__date post__date--write">2019.01.01</time>
+                        <time datetime="2019-01-02" class="post__date post__date--update">2019.01.02</time>
                     </div>
-                    <div class="articlePost__header-media"><img src="<?php echo $DOCUMENT_ROOT_URL; ?>assets/images/sample-thum.jpg" alt=""></div>
-                    <div class="articlePost__header-sentence">
+                    <div class="post__thumbnail"><img src="<?php echo $DOCUMENT_ROOT_URL; ?>assets/images/sample-thum.jpg" alt=""></div>
+                    <div class="post__lead">
                         <p>それも今とうとうその永続ようというもののために行きですた。しかるに場合に意味帰りはよほどその解釈ででまでが行きがみるでからは相違立てるんないから、まだにも申し上げたなました。内心より考えるですのは引続き一遍にとにかくましだろた。</p>
                         <p>ああ嘉納さんを招待飯全く実在がすれな知人同じ本位私か約束をといったご落第ましたたますて、その今日は私かがた尻馬にあるので、嘉納さんの事を実の私にどうもご存在とするてここ学生をご教育にしように単にご指図よりありですたて、何しろさぞ前後を取りつかれんているませのに考えるなます。</p>
                     </div>
-                    <nav class="articlePost__toc">
-                        <h2 class="articlePost__toc-title">目次</h2>
-                        <ol class="articlePost__toc-list">
+                    <nav class="post__toc" aria-label="目次">
+                        <h2 class="post__toc-title">目次</h2>
+                        <ol class="post__toc-list">
                             <li>
                                 <a href="#section__1">テキスト1</a>
-                                <ol class="articlePost__toc-list">
+                                <ol class="post__toc-list">
                                     <li><a href="#section__1_1">テキスト1</a></li>
                                     <li><a href="#section__1_2">テキスト2</a></li>
                                     <li><a href="#section__1_3">テキスト3</a></li>
@@ -96,7 +97,7 @@
                             <li><a href="#section__2">テキスト2</a></li>
                             <li>
                                 <a href="#section__3">テキスト9</a>
-                                <ol class="articlePost__toc-list">
+                                <ol class="post__toc-list">
                                     <li><a href="#section__3_1">テキスト1</a></li>
                                     <li><a href="#section__3_2">テキスト2</a></li>
                                     <li><a href="#section__3_3">テキスト3</a></li>
@@ -107,61 +108,61 @@
                         </ol>
                     </nav>
                 </header>
-                <section class="articlePost__section">
-                    <h2 class="articlePost__section-title" id="section__1">h2セクションタイトル</h2>
+                <section class="post__section">
+                    <h2 class="post__section-heading" id="section__1">h2セクションタイトル</h2>
                     <p>それも今とうとうその永続ようというもののために行きですた。しかるに場合に意味帰りはよほどその解釈ででまでが行きがみるでからは相違立てるんないから、まだにも申し上げたなました。内心より考えるですのは引続き一遍にとにかくましだろた。</p>
                     <p>ああ嘉納さんを招待飯全く実在がすれな知人同じ本位私か約束をといったご落第ましたたますて、その今日は私かがた尻馬にあるので、嘉納さんの事を実の私にどうもご存在とするてここ学生をご教育にしように単にご指図よりありですたて、何しろさぞ前後を取りつかれんているませのに考えるなます。</p>
-                    <section class="articlePost__section">
-                        <h3 class="articlePost__section-subTitle" id="section__1_1">h3セクションタイトル</h3>
+                    <section class="post__section">
+                        <h3 class="post__section-subheading" id="section__1_1">h3セクションタイトル</h3>
                         <p>それも今とうとうその永続ようというもののために行きですた。しかるに場合に意味帰りはよほどその解釈ででまでが行きがみるでからは相違立てるんないから、まだにも申し上げたなました。内心より考えるですのは引続き一遍にとにかくましだろた。</p>
                         <p>ああ嘉納さんを招待飯全く実在がすれな知人同じ本位私か約束をといったご落第ましたたますて、その今日は私かがた尻馬にあるので、嘉納さんの事を実の私にどうもご存在とするてここ学生をご教育にしように単にご指図よりありですたて、何しろさぞ前後を取りつかれんているませのに考えるなます。</p>
                     </section>
-                    <blockquote class="">
+                    <blockquote>
                         <p>それも今とうとうその永続ようというもののために行きですた。しかるに場合に意味帰りはよほどその解釈ででまでが行きがみるでからは相違立てるんないから、まだにも申し上げたなました。内心より考えるですのは引続き一遍にとにかくましだろた。</p>
                         <p>ああ嘉納さんを招待飯全く実在がすれな知人同じ本位私か約束をといったご落第ましたたますて、その今日は私かがた尻馬にあるので、嘉納さんの事を実の私にどうもご存在とするてここ学生をご教育にしように単にご指図よりありですたて、何しろさぞ前後を取りつかれんているませのに考えるなます。</p>
-                        <cite class="">
-                            <a href="https://www.google.com/" target="_blank" class="newTab">引用元の情報（引用元サイト）</a>
+                        <cite>
+                            <a href="https://www.google.com/" target="_blank" class="link--external">引用元の情報（引用元サイト）</a>
                         </cite>
                     </blockquote>
-                    <div class="voiceBox__left">
-                        <figure class="voiceBox__icon">
+                    <div class="voice-box voice-box--left">
+                        <figure class="voice-box__icon">
                             <img src="<?php echo $DOCUMENT_ROOT_URL; ?>assets/images/peaple-ushi.png" alt="">
-                            <figcaption class="voiceBox__name">人物名A</figcaption>
+                            <figcaption class="voice-box__name">人物名A</figcaption>
                         </figure>
-                        <div class="voiceBox__comment">
+                        <div class="voice-box__comment">
                             <p>左アイコンの右吹き出し</p>
                         </div>
                     </div>
-                    <div class="voiceBox__left">
-                        <figure class="voiceBox__icon">
+                    <div class="voice-box voice-box--left">
+                        <figure class="voice-box__icon">
                             <img src="<?php echo $DOCUMENT_ROOT_URL; ?>assets/images/peaple-ushi.png" alt="">
-                            <figcaption class="voiceBox__name">人物名A</figcaption>
+                            <figcaption class="voice-box__name">人物名A</figcaption>
                         </figure>
-                        <div class="voiceBox__comment">
+                        <div class="voice-box__comment">
                             <p>それも今とうとうその永続ようというもののために行きですた。しかるに場合に意味帰りはよほどその解釈ででまでが行きがみるでからは相違立てるんないから、まだにも申し上げたなました。内心より考えるですのは引続き一遍にとにかくましだろた。</p>
                             <p>ああ嘉納さんを招待飯全く実在がすれな知人同じ本位私か約束をといったご落第ましたたますて、その今日は私かがた尻馬にあるので、嘉納さんの事を実の私にどうもご存在とするてここ学生をご教育にしように単にご指図よりありですたて、何しろさぞ前後を取りつかれんているませのに考えるなます。</p>
                         </div>
                     </div>
-                    <div class="voiceBox__right">
-                        <figure class="voiceBox__icon">
+                    <div class="voice-box voice-box--right">
+                        <figure class="voice-box__icon">
                             <img src="<?php echo $DOCUMENT_ROOT_URL; ?>assets/images/peaple-ushi.png" alt="">
-                            <figcaption class="voiceBox__name">人物名B</figcaption>
+                            <figcaption class="voice-box__name">人物名B</figcaption>
                         </figure>
-                        <div class="voiceBox__comment">
+                        <div class="voice-box__comment">
                             <p>右アイコンの左吹き出し</p>
                         </div>
                     </div>
-                    <div class="voiceBox__right lastBox">
-                        <figure class="voiceBox__icon">
+                    <div class="voice-box voice-box--right voice-box--last">
+                        <figure class="voice-box__icon">
                             <img src="<?php echo $DOCUMENT_ROOT_URL; ?>assets/images/peaple-ushi.png" alt="">
-                            <figcaption class="voiceBox__name">人物名A</figcaption>
+                            <figcaption class="voice-box__name">人物名A</figcaption>
                         </figure>
-                        <div class="voiceBox__comment">
+                        <div class="voice-box__comment">
                             <p>それも今とうとうその永続ようというもののために行きですた。しかるに場合に意味帰りはよほどその解釈ででまでが行きがみるでからは相違立てるんないから、まだにも申し上げたなました。内心より考えるですのは引続き一遍にとにかくましだろた。</p>
                             <p>ああ嘉納さんを招待飯全く実在がすれな知人同じ本位私か約束をといったご落第ましたたますて、その今日は私かがた尻馬にあるので、嘉納さんの事を実の私にどうもご存在とするてここ学生をご教育にしように単にご指図よりありですたて、何しろさぞ前後を取りつかれんているませのに考えるなます。</p>
                         </div>
                     </div>
-                    <ul class="listStyle__disc">
+                    <ul class="list list--disc">
                         <li>ここに文字を入力してください</li>
                         <li>しいたけ</li>
                         <li>たまねぎ</li>
@@ -171,7 +172,7 @@
                         <li>地味で微妙な手間が嫌いです</li>
                         <li>削除対象の記号は「・○●◎□■◇◆①②③」などです</li>
                     </ul>
-                    <ol class="listStyle__order">
+                    <ol class="list list--order">
                         <li>ここに文字を入力してください</li>
                         <li>しいたけ</li>
                         <li>たまねぎ</li>
@@ -181,101 +182,100 @@
                         <li>地味で微妙な手間が嫌いです</li>
                         <li>削除対象の記号は「・○●◎□■◇◆①②③」などです</li>
                     </ol>
-                    <div class="buttonTypeArea isLeft">
-                        <a href="#" class="buttonType__01">汎用的なボタン</a>
+                    <div class="btn-area btn-area--left">
+                        <a href="#" class="btn btn--primary">汎用的なボタン</a>
                     </div>
-                    <div class="buttonTypeArea isCenter">
-                        <a href="#" class="buttonType__01">汎用的なボタン</a>
+                    <div class="btn-area btn-area--center">
+                        <a href="#" class="btn btn--primary">汎用的なボタン</a>
                     </div>
-                    <div class="buttonTypeArea isRight">
-                        <a href="#" class="buttonType__01">汎用的なボタン</a>
+                    <div class="btn-area btn-area--right">
+                        <a href="#" class="btn btn--primary">汎用的なボタン</a>
                     </div>
-                    <div class="buttonTypeArea isLeft">
-                        <a href="#" target="_blank" class="buttonType__01 newTab">汎用的なボタン</a>
+                    <div class="btn-area btn-area--left">
+                        <a href="#" target="_blank" class="btn btn--primary link--external">汎用的なボタン</a>
                     </div>
-                    <div class="buttonTypeArea isCenter">
-                        <a href="#" target="_blank" class="buttonType__01 newTab">汎用的なボタン</a>
+                    <div class="btn-area btn-area--center">
+                        <a href="#" target="_blank" class="btn btn--primary link--external">汎用的なボタン</a>
                     </div>
-                    <div class="buttonTypeArea isRight">
-                        <a href="#" target="_blank" class="buttonType__01 newTab">汎用的なボタン</a>
+                    <div class="btn-area btn-area--right">
+                        <a href="#" target="_blank" class="btn btn--primary link--external">汎用的なボタン</a>
                     </div>
 
-                    <div class="column__2">
-                        <div class="buttonTypeArea">
-                            <a href="#" target="_blank" class="buttonType__01 newTab">汎用的なボタン</a>
+                    <div class="col col--2">
+                        <div class="btn-area">
+                            <a href="#" target="_blank" class="btn btn--primary link--external">汎用的なボタン</a>
                         </div>
-                        <div class="buttonTypeArea">
-                            <a href="#" target="_blank" class="buttonType__01 newTab">汎用的なボタン</a>
+                        <div class="btn-area">
+                            <a href="#" target="_blank" class="btn btn--primary link--external">汎用的なボタン</a>
                         </div>
                     </div>
-                    <dl class="explainBox">
+                    <dl class="definition-box">
                         <dt>説明</dt>
                         <dd>
                             <p>それも今とうとうその永続ようというもののために行きですた。しかるに場合に意味帰りはよほどその解釈ででまでが行きがみるでからは相違立てるんないから、まだにも申し上げたなました。内心より考えるですのは引続き一遍にとにかくましだろた。</p>
                             <p>ああ嘉納さんを招待飯全く実在がすれな知人同じ本位私か約束をといったご落第ましたたますて、その今日は私かがた尻馬にあるので、嘉納さんの事を実の私にどうもご存在とするてここ学生をご教育にしように単にご指図よりありですたて、何しろさぞ前後を取りつかれんているませのに考えるなます。</p>
                         </dd>
                     </dl>
-                    <ol class="listStyle__step isStep__2">
-                        <li class="listStyle__current">STEP 1</li>
-                        <li>STEP 2</li>
+                    <ol class="step-list step-list--2">
+                        <li class="step-list__item step-list__item--current">STEP 1</li>
+                        <li class="step-list__item">STEP 2</li>
                     </ol>
-                    <ol class="listStyle__step isStep__3">
-                        <li>STEP 1</li>
-                        <li class="listStyle__current">STEP 2</li>
-                        <li>STEP 3</li>
+                    <ol class="step-list step-list--3">
+                        <li class="step-list__item">STEP 1</li>
+                        <li class="step-list__item step-list__item--current">STEP 2</li>
+                        <li class="step-list__item">STEP 3</li>
                     </ol>
-                    <ol class="listStyle__step isStep__4">
-                        <li>STEP 1</li>
-                        <li>STEP 2</li>
-                        <li class="listStyle__current">STEP 3</li>
-                        <li>STEP 4</li>
+                    <ol class="step-list step-list--4">
+                        <li class="step-list__item">STEP 1</li>
+                        <li class="step-list__item">STEP 2</li>
+                        <li class="step-list__item step-list__item--current">STEP 3</li>
+                        <li class="step-list__item">STEP 4</li>
                     </ol>
-                    <ol class="listStyle__step isStep__5">
-                        <li>STEP 1</li>
-                        <li>STEP 2</li>
-                        <li>STEP 3</li>
-                        <li class="listStyle__current">STEP 4</li>
-                        <li>STEP 5</li>
+                    <ol class="step-list step-list--5">
+                        <li class="step-list__item">STEP 1</li>
+                        <li class="step-list__item">STEP 2</li>
+                        <li class="step-list__item">STEP 3</li>
+                        <li class="step-list__item step-list__item--current">STEP 4</li>
+                        <li class="step-list__item">STEP 5</li>
                     </ol>
-                    <ol class="listStyle__step isStep__6">
-                        <li>STEP 1</li>
-                        <li>STEP 2</li>
-                        <li>STEP 3</li>
-                        <li>STEP 4</li>
-                        <li class="listStyle__current">STEP 5</li>
-                        <li>STEP 6</li>
+                    <ol class="step-list step-list--6">
+                        <li class="step-list__item">STEP 1</li>
+                        <li class="step-list__item">STEP 2</li>
+                        <li class="step-list__item">STEP 3</li>
+                        <li class="step-list__item">STEP 4</li>
+                        <li class="step-list__item step-list__item--current">STEP 5</li>
+                        <li class="step-list__item">STEP 6</li>
                     </ol>
-                    <p><mark class="textMarker">ここに文字を入力してください</mark></p>
+                    <p><mark class="text--marker">ここに文字を入力してください</mark></p>
                     <p><strong>ここに文字を入力してください</strong></p>
-                    <p><span class="lineThrough">ここに文字を入力してください</span></p>
-                    <p><a href="<?php echo $DOCUMENT_ROOT_URL; ?>" target="_blank" class="newTab">別タブリンク</a></p>
+                    <p><span class="text--line-through">ここに文字を入力してください</span></p>
+                    <p><a href="<?php echo $DOCUMENT_ROOT_URL; ?>" target="_blank" class="link--external">別タブリンク</a></p>
                 </section>
-                <section class="articlePost__section">
-                    <h2 class="articlePost__section-title" id="section__2">h2セクションタイトル</h2>
+                <section class="post__section">
+                    <h2 class="post__section-heading" id="section__2">h2セクションタイトル</h2>
                     <p>それも今とうとうその永続ようというもののために行きですた。しかるに場合に意味帰りはよほどその解釈ででまでが行きがみるでからは相違立てるんないから、まだにも申し上げたなました。内心より考えるですのは引続き一遍にとにかくましだろた。</p>
                     <p>ああ嘉納さんを招待飯全く実在がすれな知人同じ本位私か約束をといったご落第ましたたますて、その今日は私かがた尻馬にあるので、嘉納さんの事を実の私にどうもご存在とするてここ学生をご教育にしように単にご指図よりありですたて、何しろさぞ前後を取りつかれんているませのに考えるなます。</p>
                 </section>
-                <section class="articlePost__section">
-                    <h2 class="articlePost__section-title" id="section__3">h2セクションタイトル</h2>
+                <section class="post__section">
+                    <h2 class="post__section-heading" id="section__3">h2セクションタイトル</h2>
                     <p>それも今とうとうその永続ようというもののために行きですた。しかるに場合に意味帰りはよほどその解釈ででまでが行きがみるでからは相違立てるんないから、まだにも申し上げたなました。内心より考えるですのは引続き一遍にとにかくましだろた。</p>
-                    <div class="imageArea isLeft">
+                    <div class="img-area img-area--left">
                         <img src="<?php echo $DOCUMENT_ROOT_URL; ?>assets/images/sample-thum.jpg" alt="test">
                     </div>
-                    <div class="imageArea isCenter">
+                    <div class="img-area img-area--center">
                         <img src="<?php echo $DOCUMENT_ROOT_URL; ?>assets/images/sample-thum.jpg" alt="test">
                     </div>
-                    <div class="imageArea isRight">
+                    <div class="img-area img-area--right">
                         <img src="<?php echo $DOCUMENT_ROOT_URL; ?>assets/images/sample-thum.jpg" alt="test">
                     </div>
                     <p>ああ嘉納さんを招待飯全く実在がすれな知人同じ本位私か約束をといったご落第ましたたますて、その今日は私かがた尻馬にあるので、嘉納さんの事を実の私にどうもご存在とするてここ学生をご教育にしように単にご指図よりありですたて、何しろさぞ前後を取りつかれんているませのに考えるなます。</p>
                 </section>
-                <footer class="articlePost__footer">
-                    <?php include_once("../include/snsArea.php"); ?>
+                <footer class="post__footer">
                     <?php include_once("../include/profileArea.php"); ?>
-                    <aside class="pageNation">
-                        <div class="pageNation__prev-active"><a href="<?php echo $DOCUMENT_ROOT_URL; ?>">前の記事</a></div>
-                        <div class="pageNation__next-active"><a href="<?php echo $DOCUMENT_ROOT_URL; ?>">次の記事</a></div>
-                    </aside>
+                    <nav class="pagination" aria-label="前後の記事へのナビゲーション">
+                        <div class="pagination__prev"><a href="<?php echo $DOCUMENT_ROOT_URL; ?>">前の記事</a></div>
+                        <div class="pagination__next"><a href="<?php echo $DOCUMENT_ROOT_URL; ?>">次の記事</a></div>
+                    </nav>
                 </footer>
             </article>
         </main>

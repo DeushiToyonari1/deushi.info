@@ -1,62 +1,40 @@
-<?php
-include_once("include/config.php");
-
-/*
-$sql = "
-SELECT * FROM article WHERE `id` = 1
-";
-
-$result = mysql_query($sql,$db_con);
-
-$data = mysql_fetch_array($result) {
-
+<div class="post-list">
+    <?php
+    // ループ内のコード
+    while ( have_posts() ) : the_post();
+    // NEWアイコン表示
+    $days = 5;
+    $today = date_i18n('U');
+    $entry_day = get_the_time('U');
+    $keika = date('U',($today - $entry_day)) / 86400;
+    if ( $days > $keika ){
+        $newText = "NEW";
+        $newClass = "post-list__status";
+    }
+    else {
+        $newText = "";
+        $newClass = "";
+    }
 ?>
-
-<?php echo $data["id"]; ?>
-
-<?php
-}
-*/
-
-
-
-
-/*
-$sql = "SELECT * FROM article";
-$stmt = $db_host->query($sql);
-foreach ($stmt as $row) {
-    echo $row['id'];
-}
-
-
-*/
-
-?>
-
-<div class="articleList">
-                <article class="articleList-item">
-                    <a href="<?php echo $DOCUMENT_ROOT_URL; ?>article/prologue.html">
-                        <div class="articleList-media">
-                            <img src="<?php echo $DOCUMENT_ROOT_URL; ?>assets/images/mv-prologue.jpg" alt="サムネイル">
-                        </div>
-                        <div class="articleList-content">
-                            <div class="articleList-meta">
-                                <time datetime="2019-03-29" class="articleList-date">2019.03.29</time>
-                                <span class="articleList-category">未分類</span>
-                            </div>
-                            <h2 class="articleList-title">過去にもブログサイトをやっていたことはありますが、忙しさゆえ、サイトを閉鎖してしまいました。あれから数年、ようやく重たい腰を上げ、新たにブログサイトを立ち上げることとなりました（祝）</h2>
-                        </div>
-                        <div class="articleList-footer">
-                            <span class="articleList-status">NEW</span>
+                <article class="post-list__item">
+                    <a href="<?php the_permalink(); ?>">
+                        <div class="post-list__media">
+                            <?php the_post_thumbnail(); ?>
                         </div>
                     </a>
+                    <div class="post-list__content">
+                        <div class="post-list__meta">
+                            <time datetime="<?php the_time('Y-m-d'); ?>" class="post-list__date"><?php the_time('Y.m.d'); ?></time>
+                            <div class="post-list__category">
+                                <?php the_category(' ') ?>
+                            </div>
+                        </div>
+                        <h2 class="post-list__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                    </div>
+                    <div class="post-list__footer">
+                        <a href="<?php the_permalink(); ?>"><span class="<?php echo $newClass; ?>"><?php echo $newText; ?></span></a>
+                    </div>
                 </article>
+    <?php endwhile; ?>
             </div>
-            <?php
-            /*
-            <div class="pageNation">
-                <div class="pageNation__prev-active"><a href="<?php echo $DOCUMENT_ROOT_URL; ?>">前の10件を見る</a></div>
-                <div class="pageNation__next-active"><a href="<?php echo $DOCUMENT_ROOT_URL; ?>">次の10件を見る</a></div>
-            </div>
-            */
-            ?>
+            <?php if( function_exists("the_pagination") ) the_pagination(); ?>
