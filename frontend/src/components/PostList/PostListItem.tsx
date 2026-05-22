@@ -19,7 +19,7 @@ export function PostListItem({ post }: Props) {
 
   return (
     <article className="post-list__item">
-      <Link to={`/posts/${post.slug}`} className="post-list__link">
+      <Link to={`/posts/${post.slug}`}>
         <div className="post-list__media">
           {media ? (
             <img src={media.source_url} alt={media.alt_text || post.title.rendered} loading="lazy" />
@@ -27,22 +27,27 @@ export function PostListItem({ post }: Props) {
             <img src="/assets/images/sample-thum.jpg" alt="" loading="lazy" />
           )}
         </div>
-        <div className="post-list__content">
-          <div className="post-list__meta">
-            <time className="post-list__date" dateTime={post.date}>{dateStr}</time>
-            {category && (
-              <span className="post-list__category">{category.name}</span>
-            )}
-          </div>
-          <h2
-            className="post-list__title"
-            dangerouslySetInnerHTML={{ __html: post.title.rendered }}
-          />
-          <div className="post-list__footer">
-            {isNew && <span className="post-list__status">NEW</span>}
-          </div>
-        </div>
       </Link>
+      <div className="post-list__content">
+        <div className="post-list__meta">
+          <time className="post-list__date" dateTime={post.date}>{dateStr}</time>
+          {category && (
+            <div className="post-list__category">
+              <Link to={`/category/${category.slug}`}>{category.name}</Link>
+            </div>
+          )}
+        </div>
+        <h2 className="post-list__title">
+          <Link to={`/posts/${post.slug}`}>
+            <span dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+          </Link>
+        </h2>
+      </div>
+      <div className="post-list__footer">
+        <Link to={`/posts/${post.slug}`}>
+          {isNew && <span className="post-list__status">NEW</span>}
+        </Link>
+      </div>
     </article>
   );
 }

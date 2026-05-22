@@ -30,14 +30,14 @@ export function RecentPostList() {
                   )}
                 </div>
                 <div className="recent-post-list__body">
-                  <p
+                  <div
                     className="recent-post-list__title"
                     dangerouslySetInnerHTML={{ __html: post.title.rendered }}
                   />
+                  <div className="recent-post-list__meta">
+                    <time className="recent-post-list__date" dateTime={post.date}>{dateStr}</time>
+                  </div>
                 </div>
-              </div>
-              <div className="recent-post-list__meta">
-                <time className="recent-post-list__date" dateTime={post.date}>{dateStr}</time>
               </div>
             </Link>
           </li>

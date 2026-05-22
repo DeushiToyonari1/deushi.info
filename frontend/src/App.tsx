@@ -6,6 +6,8 @@ import { Sidebar } from './components/Sidebar';
 import { HomePage } from './pages/HomePage';
 import { PostPage } from './pages/PostPage';
 import { CategoryPage } from './pages/CategoryPage';
+import { ProfilePage } from './pages/ProfilePage';
+import { ContactPage } from './pages/ContactPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 export default function App() {
@@ -18,6 +20,8 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/posts/:slug" element={<PostPage />} />
             <Route path="/category/:slug" element={<CategoryPage />} />
+            <Route path="/profile/*" element={<ProfilePage />} />
+            <Route path="/contact/*" element={<ContactPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>

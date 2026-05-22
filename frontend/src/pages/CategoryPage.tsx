@@ -32,13 +32,11 @@ export function CategoryPage() {
   return (
     <>
       <h1 className="archive-title">カテゴリー：{category.name}</h1>
-      <ul className="post-list">
+      <div className="post-list">
         {data.data.map((post) => (
-          <li key={post.id}>
-            <PostListItem post={post} />
-          </li>
+          <PostListItem key={post.id} post={post} />
         ))}
-      </ul>
+      </div>
       <Pagination
         page={page}
         totalPages={data.totalPages}
