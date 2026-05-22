@@ -8,7 +8,11 @@
 
 ## プロジェクトの場所
 
-- プロジェクトは、`/Users/degyuutoyonari/git/deushi.info` 内です。
+- プロジェクトの実体は `/Applications/MAMP/htdocs` です（git リポジトリルートも同じ）
+- React フロントエンド: `/Applications/MAMP/htdocs/frontend/`
+- WordPress テーマ（静的ビルド）: `/Applications/MAMP/htdocs/dist/`
+- WordPress ローカルインストール: `/Applications/MAMP/htdocs/wp/`（.gitignore 除外済み）
+- リモート: `https://github.com/DeushiToyonari1/deushi.info.git`
 
 ## 禁止事項
 
