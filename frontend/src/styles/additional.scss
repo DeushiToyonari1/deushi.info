@@ -49,6 +49,29 @@
   height: auto;
 }
 
+// ─── 記事本文内のコード要素 ───────────────────────────────────
+// import-helper プレビューも .post__section を使うため同時に適用される
+.post__section {
+  // インライン <code>：フォントサイズと上下 padding を調整
+  code {
+    font-size: 1rem;
+    padding: 0.2em 0.5em;
+    vertical-align: 0.05em;
+  }
+
+  // コードブロック <pre>：ブロック上下の余白を確保
+  pre {
+    margin: 1.75em 0;
+
+    // <pre> 内の <code> は padding 不要（親が余白を持つ）
+    code {
+      font-size: 1rem;
+      padding: 0;
+      vertical-align: baseline;
+    }
+  }
+}
+
 // ─── 2カラムレイアウト: 完全上書き ───────────────────────────
 // WordPress テーマの width:1200px（固定値）をリセットし、
 // flex-direction:row を !important で確実に維持する
