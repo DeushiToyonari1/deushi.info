@@ -35,6 +35,18 @@
   display: block;
 }
 
+// ─── post-list カテゴリーリンクの文字色 ─────────────────────
+.post-list__category {
+  a {
+    color: #fff;
+    text-decoration: none;
+
+    &:hover {
+      color: #deff9a;
+    }
+  }
+}
+
 // ─── site-header__inner: 固定1200pxをレスポンシブに上書き ───
 .site-header__inner {
   width: 100% !important;
