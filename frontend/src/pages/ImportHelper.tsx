@@ -169,6 +169,7 @@ export function ImportHelper() {
 
 function ImportHelperInner() {
   const [rawHtml, setRawHtml] = useState('');
+  const [copied, setCopied] = useState(false);
 
   const { html: previewHtml, stats } = useMemo(
     () => transformHtml(rawHtml),
@@ -176,6 +177,27 @@ function ImportHelperInner() {
   );
 
   const handleClear = () => setRawHtml('');
+
+  const handleCopy = async () => {
+    if (!previewHtml) return;
+    try {
+      await navigator.clipboard.writeText(previewHtml);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // clipboard API が使えない環境向けフォールバック
+      const ta = document.createElement('textarea');
+      ta.value = previewHtml;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
 
   return (
     <div className="import-helper">
@@ -232,6 +254,14 @@ function ImportHelperInner() {
         <div className="import-helper__pane import-helper__pane--preview">
           <div className="import-helper__pane-header">
             <span>👁 プレビュー（ブログと同一スタイル）</span>
+            <button
+              className={`import-helper__copy-btn${copied ? ' import-helper__copy-btn--done' : ''}`}
+              onClick={handleCopy}
+              disabled={!previewHtml}
+              type="button"
+            >
+              {copied ? '✓ コピー完了！' : '📋 HTMLをコピー'}
+            </button>
           </div>
           <div className="import-helper__preview-wrap">
             {previewHtml ? (
