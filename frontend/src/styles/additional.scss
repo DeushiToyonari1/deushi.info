@@ -63,6 +63,19 @@
     line-height: 1.8;     // 行間をゆったりと
   }
 
+  // 見出し：本文（1.125rem）より明確に大きく、強弱をつける
+  h2 {
+    font-size: 2rem;
+    line-height: 1.35;
+    margin: 2.25em 0 0.75em;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    margin: 2em 0 0.6em;
+  }
+
   // インライン <code>：グレー背景・角丸・フォントサイズを調整
   code {
     font-size: 1.15rem;
