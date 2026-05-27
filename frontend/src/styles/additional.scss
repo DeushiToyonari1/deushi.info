@@ -52,21 +52,37 @@
 // ─── 記事本文内のコード要素 ───────────────────────────────────
 // import-helper プレビューも .post__section を使うため同時に適用される
 .post__section {
-  // インライン <code>：フォントサイズと上下 padding を調整
+
+  // インライン <code>：グレー背景・角丸・フォントサイズを調整
   code {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    font-family: 'Menlo', 'Monaco', 'Consolas', 'Courier New', monospace;
     padding: 0.2em 0.5em;
+    background: #f0f0f0;
+    border-radius: 4px;
+    color: #c7254e;
     vertical-align: 0.05em;
+    word-break: break-all;
   }
 
-  // コードブロック <pre>：ブロック上下の余白を確保
+  // コードブロック <pre>：上下余白・背景・角丸・横スクロール
   pre {
-    margin: 1.75em 0;
+    margin: 2em 0;
+    padding: 1.25em 1.5em;
+    background: #282c34;
+    border-radius: 8px;
+    overflow-x: auto;
+    line-height: 1.7;
 
-    // <pre> 内の <code> は padding 不要（親が余白を持つ）
+    // <pre> 内の <code> はブロック全体がコードなので背景・色をリセット
     code {
-      font-size: 1rem;
+      font-size: 0.92rem;
       padding: 0;
+      background: transparent;
+      border-radius: 0;
+      color: #abb2bf;
+      word-break: normal;
+      white-space: pre;
       vertical-align: baseline;
     }
   }

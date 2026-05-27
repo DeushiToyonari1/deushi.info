@@ -10,8 +10,11 @@ interface Props {
 
 export function PostListItem({ post }: Props) {
   const isNew = Date.now() - new Date(post.date).getTime() < FIVE_DAYS_MS;
-  const media = post._embedded?.['wp:featuredmedia']?.[0];
-  const category = post._embedded?.['wp:term']?.[0]?.[0];
+  // rest_forbidden エラーの場合 source_url が存在しないため、明示的に確認する
+  const mediaItem = post._embedded?.['wp:featuredmedia']?.[0];
+  const mediaUrl  = mediaItem && 'source_url' in mediaItem ? mediaItem.source_url as string : null;
+  const mediaAlt  = mediaItem && 'alt_text'   in mediaItem ? mediaItem.alt_text   as string : '';
+  const category  = post._embedded?.['wp:term']?.[0]?.[0];
   const dateStr = new Date(post.date).toLocaleDateString('ja-JP', {
     year: 'numeric',
     month: '2-digit',
@@ -22,8 +25,8 @@ export function PostListItem({ post }: Props) {
     <article className="post-list__item">
       <Link to={`/posts/${post.slug}`}>
         <div className="post-list__media">
-          {media ? (
-            <LazyImage src={media.source_url} alt={media.alt_text || post.title.rendered} />
+          {mediaUrl ? (
+            <LazyImage src={mediaUrl} alt={mediaAlt || post.title.rendered} />
           ) : (
             <LazyImage src="/assets/images/sample-thum.jpg" alt="" />
           )}
