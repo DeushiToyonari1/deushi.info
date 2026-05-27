@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import type { WPPost } from '../../types/post';
+import { SEO } from '../SEO';
 
 interface Props {
   post: WPPost;
@@ -14,8 +15,12 @@ export function PostDetail({ post }: Props) {
     day: '2-digit',
   });
 
+  // excerpt.rendered からHTMLタグを除去してプレーンテキストを取得
+  const plainExcerpt = post.excerpt.rendered.replace(/<[^>]+>/g, '').trim();
+
   return (
     <article className="post">
+      <SEO title={post.title.rendered} description={plainExcerpt} />
       <header className="post__header">
         <h1 className="post__title" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
         <div className="post__meta">
