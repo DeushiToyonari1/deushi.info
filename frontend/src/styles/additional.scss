@@ -53,6 +53,16 @@
 // import-helper プレビューも .post__section を使うため同時に適用される
 .post__section {
 
+  // 本文ベース：段落・リスト・引用などの読みやすさを統一
+  p,
+  li,
+  blockquote,
+  dt,
+  dd {
+    font-size: 1.125rem;  // ≈ 18px（本文を一回り大きく）
+    line-height: 1.8;     // 行間をゆったりと
+  }
+
   // インライン <code>：グレー背景・角丸・フォントサイズを調整
   code {
     font-size: 1.15rem;
