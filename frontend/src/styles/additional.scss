@@ -293,6 +293,19 @@
   }
 }
 
+// ─── 画像フェードイン効果 ─────────────────────────────────────
+// .img-fade: 初期状態は透明。読み込み完了で .is-loaded が付き、ふわっと表示される。
+// LazyImage コンポーネントが onLoad 時に is-loaded を付与する。
+// dangerouslySetInnerHTML 内の img は PostDetail の useEffect が付与する。
+.img-fade {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+
+  &.is-loaded {
+    opacity: 1;
+  }
+}
+
 // ─── モバイル (max-width: 750px) ─────────────────────────────
 @media only screen and (max-width: 750px) {
   // 2カラム → 1カラムに戻す

@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import type { WPPost } from '../../types/post';
 import { SEO } from '../SEO';
+import { LazyImage } from '../LazyImage';
 
 interface Props {
   post: WPPost;
@@ -17,6 +19,28 @@ export function PostDetail({ post }: Props) {
 
   // excerpt.rendered からHTMLタグを除去してプレーンテキストを取得
   const plainExcerpt = post.excerpt.rendered.replace(/<[^>]+>/g, '').trim();
+
+  // content.rendered 内の <img> タグに loading="lazy" を付与（重複しない）
+  const lazyContent = post.content.rendered.replace(
+    /<img(?![^>]*\bloading=)([^>]*>)/g,
+    '<img loading="lazy"$1',
+  );
+
+  // content.rendered 内の img にフェードインクラスを付与（読み込み完了で is-loaded を追加）
+  useEffect(() => {
+    const section = document.querySelector<HTMLElement>('.post__section');
+    if (!section) return;
+
+    const imgs = section.querySelectorAll<HTMLImageElement>('img');
+    imgs.forEach((img) => {
+      img.classList.add('img-fade');
+      if (img.complete && img.naturalWidth > 0) {
+        img.classList.add('is-loaded');
+      } else {
+        img.addEventListener('load', () => img.classList.add('is-loaded'), { once: true });
+      }
+    });
+  }, [post.content.rendered]);
 
   return (
     <article className="post">
@@ -38,20 +62,20 @@ export function PostDetail({ post }: Props) {
         </div>
         {media && (
           <div className="post__thumbnail">
-            <img src={media.source_url} alt={media.alt_text || ''} />
+            <LazyImage src={media.source_url} alt={media.alt_text || ''} />
           </div>
         )}
       </header>
 
       <div
         className="post__section"
-        dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+        dangerouslySetInnerHTML={{ __html: lazyContent }}
       />
 
       <footer className="post__footer">
         <div className="profile-card">
           <div className="profile-card__photo">
-            <img src="/images/image-profile.jpg" alt="プロフィール写真" />
+            <LazyImage src="/images/image-profile.jpg" alt="プロフィール写真" />
           </div>
           <div className="profile-card__body">
             <dl className="profile-card__definition">
