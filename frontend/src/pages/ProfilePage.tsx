@@ -1,3 +1,5 @@
+import { PictureImage } from '../components/PictureImage';
+
 export function ProfilePage() {
   return (
     <article className="articlePost">
@@ -6,7 +8,7 @@ export function ProfilePage() {
       </header>
       <div className="profile-card">
         <div className="profile-card__photo">
-          <img src="/images/image-profile.jpg" alt="プロフィール写真" />
+          <PictureImage src="/images/image-profile.jpg" alt="プロフィール写真" />
         </div>
         <div className="profile-card__body">
           <dl className="profile-card__definition">

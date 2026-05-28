@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import type { WPPost } from '../../types/post';
 import { LazyImage } from '../LazyImage';
+import { PictureImage } from '../PictureImage';
 
 const FIVE_DAYS_MS = 5 * 24 * 60 * 60 * 1000;
 
@@ -28,7 +29,7 @@ export function PostListItem({ post }: Props) {
           {mediaUrl ? (
             <LazyImage src={mediaUrl} alt={mediaAlt || post.title.rendered} />
           ) : (
-            <LazyImage src="/assets/images/sample-thum.jpg" alt="" />
+            <PictureImage src="/images/dummy-post-01.png" alt="" />
           )}
         </div>
       </Link>

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useRecentPosts } from '../../hooks/useRecentPosts';
+import { PictureImage } from '../PictureImage';
 
 export function RecentPostList() {
   const { data, isLoading, isError } = useRecentPosts();
@@ -11,7 +12,8 @@ export function RecentPostList() {
   return (
     <ul className="recent-post-list">
       {data.data.map((post) => {
-        const media = post._embedded?.['wp:featuredmedia']?.[0];
+        const mediaItem = post._embedded?.['wp:featuredmedia']?.[0];
+        const media = mediaItem && 'source_url' in mediaItem ? mediaItem : null;
         const dateStr = new Date(post.date).toLocaleDateString('ja-JP', {
           year: 'numeric',
           month: '2-digit',
@@ -24,9 +26,13 @@ export function RecentPostList() {
               <div className="recent-post-list__inner">
                 <div className="recent-post-list__thumbnail">
                   {media ? (
-                    <img src={media.source_url} alt={media.alt_text || ''} loading="lazy" />
+                    <img
+                      src={(media as { source_url: string }).source_url}
+                      alt={(media as { alt_text: string }).alt_text || ''}
+                      loading="lazy"
+                    />
                   ) : (
-                    <img src="/assets/images/sample-thum.jpg" alt="" loading="lazy" />
+                    <PictureImage src="/images/dummy-post-01.png" alt="" />
                   )}
                 </div>
                 <div className="recent-post-list__body">

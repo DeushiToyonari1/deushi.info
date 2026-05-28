@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import type { WPPost } from '../../types/post';
 import { SEO } from '../SEO';
 import { LazyImage } from '../LazyImage';
+import { PictureImage } from '../PictureImage';
 
 interface Props {
   post: WPPost;
@@ -78,7 +79,7 @@ export function PostDetail({ post }: Props) {
       <footer className="post__footer">
         <div className="profile-card">
           <div className="profile-card__photo">
-            <LazyImage src="/images/image-profile.jpg" alt="プロフィール写真" />
+            <PictureImage src="/images/image-profile.jpg" alt="プロフィール写真" />
           </div>
           <div className="profile-card__body">
             <dl className="profile-card__definition">
