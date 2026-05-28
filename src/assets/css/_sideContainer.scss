@@ -189,15 +189,6 @@
             text-align: center;
         }
     }
-    .sidebar__archive-list {
-        width: 100%;
-        height: 40px;
-        line-height: 40px;
-        color: $baseColor;
-        background: $subColor;
-        border: none;
-        border-radius: 0;
-    }
 }
 
 
@@ -397,17 +388,6 @@
                 font-size: 22px;
                 text-align: center;
             }
-        }
-        .sidebar__archive-list {
-            padding: 0 10px;
-            width: 100%;
-            height: 40px;
-            line-height: 40px;
-            color: $baseColor;
-            background: $subColor;
-            border: none;
-            border-radius: 0;
-            box-sizing: border-box;
         }
     }
 }

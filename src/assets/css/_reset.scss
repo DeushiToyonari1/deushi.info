@@ -158,9 +158,6 @@ mark {
     font-size: inherit;
     font-weight: inherit;
     background: #ff0;
-    &.textMarker {
-        background: linear-gradient(transparent 50%, yellow 50%);
-    }
 }
 
 abbr[title], dfn[title] {
@@ -215,36 +212,6 @@ a {
 		text-decoration: underline;
 	}
 
-    &.blank[target=_blank] {
-    	padding: 0 20px 0 0;
-    	position: relative;
-    	top: 0;
-    	left: 0;
-
-    	&:before {
-    		content: "";
-    		width: 10px;
-    		height: 6px;
-    		position: absolute;
-    		top: 3px;
-    		right: 3px;
-    		border: 1px solid #f18f99;
-    		border-top: 3px solid #f18f99;
-    		background: rgba(255, 255, 255, 0.3);
-    	}
-
-    	&:after {
-    		content: "";
-    		width: 10px;
-    		height: 6px;
-    		position: absolute;
-    		top: 0;
-    		right: 0;
-    		border: 1px solid #cc1125;
-    		border-top: 3px solid #cc1125;
-    		background: rgba(255, 255, 255, 0.3);
-    	}
-    }
 }
 
 // 追記
@@ -382,8 +349,3 @@ a, area, button, input, label, select, summary, textarea, [tabindex] {
   position: absolute;
 }
 
-span {
-    &.lineThrough {
-        text-decoration: line-through;
-    }
-}
