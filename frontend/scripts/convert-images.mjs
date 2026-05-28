@@ -3,14 +3,15 @@
  * 指定ディレクトリ（再帰）内の画像を AVIF / WebP に一括変換するスクリプト。
  *
  * 使い方:
- *   node scripts/convert-images.mjs                   # デフォルト: public/images/
+ *   node scripts/convert-images.mjs                   # デフォルト: WordPress uploads/
  *   node scripts/convert-images.mjs /path/to/dir      # 任意ディレクトリ（再帰）
+ *   node scripts/convert-images.mjs ./public/images   # フロントエンド静的アセット
  */
 import sharp from 'sharp';
 import { readdir, stat } from 'fs/promises';
 import { join, extname, basename, resolve } from 'path';
 
-const DEFAULT_DIR = new URL('../public/images/', import.meta.url).pathname;
+const DEFAULT_DIR = '/Applications/MAMP/htdocs/wp/wp-content/uploads';
 const INPUT_DIR   = process.argv[2] ? resolve(process.argv[2]) : DEFAULT_DIR;
 const EXTENSIONS  = new Set(['.jpg', '.jpeg', '.png', '.gif']);
 
