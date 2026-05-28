@@ -3,7 +3,6 @@ import parse, { type HTMLReactParserOptions } from 'html-react-parser';
 import type { DOMNode } from 'html-react-parser';
 import type { WPPost } from '../../types/post';
 import { SEO } from '../SEO';
-import { LazyImage } from '../LazyImage';
 import { PictureImage } from '../PictureImage';
 
 interface Props {
@@ -93,7 +92,7 @@ export function PostDetail({ post }: Props) {
         </div>
         {mediaUrl && (
           <div className="post__thumbnail">
-            <LazyImage src={mediaUrl} alt={mediaAlt} />
+            <PictureImage src={mediaUrl} alt={mediaAlt} />
           </div>
         )}
       </header>
