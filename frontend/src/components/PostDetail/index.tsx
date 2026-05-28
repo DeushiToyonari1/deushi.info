@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import parse, { type HTMLReactParserOptions, Element } from 'html-react-parser';
+import parse, { type HTMLReactParserOptions } from 'html-react-parser';
+import type { DOMNode } from 'html-react-parser';
 import type { WPPost } from '../../types/post';
 import { SEO } from '../SEO';
 import { LazyImage } from '../LazyImage';
@@ -10,15 +11,21 @@ interface Props {
 }
 
 /**
- * content.rendered 内の <img> を <PictureImage>（<picture>構造）へ置き換えるパースオプション。
- * - SKILL.md §3 に従い、avif → webp → オリジナル のフォールバック順で出力する。
- * - src / alt / className などの属性は <img> に引き継ぐ。
- * - PictureImage 自体が loading="lazy" とフェードインを内包するため、
- *   以前の useEffect による DOM 操作は不要になる。
+ * domNode が <img> 要素かを instanceof に頼らず安全に判定するガード関数。
+ * html-react-parser v6 + Vite ESM 環境では、domhandler の Element が
+ * モジュールインスタンスの不一致により instanceof で false になるため、
+ * 'attribs' / 'name' プロパティの存在で代替判定する。
  */
+function isImgElement(domNode: DOMNode): domNode is DOMNode & {
+  name: string;
+  attribs: Record<string, string>;
+} {
+  return 'attribs' in domNode && 'name' in domNode && (domNode as { name: string }).name === 'img';
+}
+
 const contentParseOptions: HTMLReactParserOptions = {
   replace(domNode) {
-    if (!(domNode instanceof Element) || domNode.name !== 'img') return;
+    if (!isImgElement(domNode)) return;
 
     const {
       src = '',
