@@ -25,15 +25,10 @@ export function RecentPostList() {
             <Link to={`/posts/${post.slug}`} className="recent-post-list__link">
               <div className="recent-post-list__inner">
                 <div className="recent-post-list__thumbnail">
-                  {media ? (
-                    <img
-                      src={(media as { source_url: string }).source_url}
-                      alt={(media as { alt_text: string }).alt_text || ''}
-                      loading="lazy"
-                    />
-                  ) : (
-                    <PictureImage src="/images/dummy-post-01.png" alt="" />
-                  )}
+                  <PictureImage
+                    src={media ? (media as { source_url: string }).source_url : '/images/dummy-post-01.png'}
+                    alt={media ? (media as { alt_text: string }).alt_text || '' : ''}
+                  />
                 </div>
                 <div className="recent-post-list__body">
                   <div
