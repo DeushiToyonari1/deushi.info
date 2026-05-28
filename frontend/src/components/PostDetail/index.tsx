@@ -10,17 +10,21 @@ interface Props {
   post: WPPost;
 }
 
+/** html-react-parser が渡す内部ノード型（プロパティアクセス用） */
+type RawNode = Record<string, unknown>;
+
 /**
- * domNode が <img> 要素かを instanceof に頼らず安全に判定するガード関数。
- * html-react-parser v6 + Vite ESM 環境では、domhandler の Element が
- * モジュールインスタンスの不一致により instanceof で false になるため、
- * 'attribs' / 'name' プロパティの存在で代替判定する。
+ * domNode が <img> タグかを型安全に判定するガード関数。
+ * - instanceof は ESM/CJS のモジュールインスタンス不一致で false になるため使わない。
+ * - html-react-parser が生成する Element ノードは type === 'tag' を持つ。
+ *   この文字列比較のみで判定することで、どの環境でも確実に動作する。
  */
 function isImgElement(domNode: DOMNode): domNode is DOMNode & {
   name: string;
   attribs: Record<string, string>;
 } {
-  return 'attribs' in domNode && 'name' in domNode && (domNode as { name: string }).name === 'img';
+  const el = domNode as RawNode;
+  return el['type'] === 'tag' && el['name'] === 'img';
 }
 
 const contentParseOptions: HTMLReactParserOptions = {
