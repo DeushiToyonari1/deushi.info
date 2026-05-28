@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import parse, { type HTMLReactParserOptions, Element } from 'html-react-parser';
 import type { WPPost } from '../../types/post';
 import { SEO } from '../SEO';
 import { LazyImage } from '../LazyImage';
@@ -9,12 +9,46 @@ interface Props {
   post: WPPost;
 }
 
+/**
+ * content.rendered 内の <img> を <PictureImage>（<picture>構造）へ置き換えるパースオプション。
+ * - SKILL.md §3 に従い、avif → webp → オリジナル のフォールバック順で出力する。
+ * - src / alt / className などの属性は <img> に引き継ぐ。
+ * - PictureImage 自体が loading="lazy" とフェードインを内包するため、
+ *   以前の useEffect による DOM 操作は不要になる。
+ */
+const contentParseOptions: HTMLReactParserOptions = {
+  replace(domNode) {
+    if (!(domNode instanceof Element) || domNode.name !== 'img') return;
+
+    const {
+      src = '',
+      alt = '',
+      class: className,
+      width,
+      height,
+    } = domNode.attribs;
+
+    if (!src) return;
+
+    return (
+      <PictureImage
+        src={src}
+        alt={alt}
+        className={className}
+        width={width  ? Number(width)  : undefined}
+        height={height ? Number(height) : undefined}
+      />
+    );
+  },
+};
+
 export function PostDetail({ post }: Props) {
   // rest_forbidden エラーの場合 source_url が存在しないため、明示的に確認する
   const mediaItem = post._embedded?.['wp:featuredmedia']?.[0];
   const mediaUrl  = mediaItem && 'source_url' in mediaItem ? mediaItem.source_url as string : null;
   const mediaAlt  = mediaItem && 'alt_text'   in mediaItem ? mediaItem.alt_text   as string : '';
   const categories = post._embedded?.['wp:term']?.[0] ?? [];
+
   const dateStr = new Date(post.date).toLocaleDateString('ja-JP', {
     year: 'numeric',
     month: '2-digit',
@@ -24,27 +58,9 @@ export function PostDetail({ post }: Props) {
   // excerpt.rendered からHTMLタグを除去してプレーンテキストを取得
   const plainExcerpt = post.excerpt.rendered.replace(/<[^>]+>/g, '').trim();
 
-  // content.rendered 内の <img> タグに loading="lazy" を付与（重複しない）
-  const lazyContent = post.content.rendered.replace(
-    /<img(?![^>]*\bloading=)([^>]*>)/g,
-    '<img loading="lazy"$1',
-  );
-
-  // content.rendered 内の img にフェードインクラスを付与（読み込み完了で is-loaded を追加）
-  useEffect(() => {
-    const section = document.querySelector<HTMLElement>('.post__section');
-    if (!section) return;
-
-    const imgs = section.querySelectorAll<HTMLImageElement>('img');
-    imgs.forEach((img) => {
-      img.classList.add('img-fade');
-      if (img.complete && img.naturalWidth > 0) {
-        img.classList.add('is-loaded');
-      } else {
-        img.addEventListener('load', () => img.classList.add('is-loaded'), { once: true });
-      }
-    });
-  }, [post.content.rendered]);
+  // content.rendered を html-react-parser でReactツリーに変換し、
+  // img タグを PictureImage（<picture>構造）に置き換える
+  const parsedContent = parse(post.content.rendered, contentParseOptions);
 
   return (
     <article className="post">
@@ -71,10 +87,10 @@ export function PostDetail({ post }: Props) {
         )}
       </header>
 
-      <div
-        className="post__section"
-        dangerouslySetInnerHTML={{ __html: lazyContent }}
-      />
+      {/* html-react-parser が img → PictureImage に置き換えるためそのまま展開 */}
+      <div className="post__section">
+        {parsedContent}
+      </div>
 
       <footer className="post__footer">
         <div className="profile-card">
