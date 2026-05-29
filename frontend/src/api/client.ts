@@ -4,12 +4,19 @@ import { DUMMY_POSTS, DUMMY_CATEGORIES } from '../mocks/dummyData';
 const WP_BASE = import.meta.env.VITE_WP_URL || '';
 const BASE = `${WP_BASE}/wp-json/wp/v2`;
 
-// WordPress が返す絶対 URL を Vite proxy 経由の相対パスに正規化
-// 例: http://localhost:8888/wp/wp-content/... → /wp-content/...
+// WordPress が返す絶対 URL を正規化する
+// dev  : VITE_WP_ORIGIN を空文字に置換 → Vite proxy 経由の相対パス
+// prod : VITE_WP_ORIGIN を WP_BASE に置換、または localhost URL を WP_BASE で上書き
 const WP_ORIGIN = import.meta.env.VITE_WP_ORIGIN || '';
 function normalizeWpUrls(json: string): string {
-  if (!WP_ORIGIN) return json;
-  return json.replaceAll(WP_ORIGIN, '');
+  if (WP_ORIGIN) {
+    return json.replaceAll(WP_ORIGIN, WP_BASE);
+  }
+  if (WP_BASE) {
+    // localhost:PORT(/wp)? → WP_BASE（DB 内にローカル URL が残存している場合の対策）
+    return json.replace(/https?:\/\/localhost:\d+(?:\/\w+)?/g, WP_BASE);
+  }
+  return json;
 }
 
 function getDummyResponse<T>(
