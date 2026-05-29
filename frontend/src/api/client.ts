@@ -23,6 +23,10 @@ function getDummyResponse<T>(
   path: string,
   params?: Record<string, string>
 ): { data: T; total: number; totalPages: number } {
+  if (path.startsWith('/media')) {
+    return { data: [] as T, total: 0, totalPages: 0 };
+  }
+
   if (path.startsWith('/categories')) {
     const slug = params?.slug;
     const result = slug

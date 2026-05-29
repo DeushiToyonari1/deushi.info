@@ -1,5 +1,11 @@
 import type { WPCategory } from './category';
 
+export interface WPMediaItem {
+  id: number;
+  source_url: string;
+  alt_text: string;
+}
+
 export interface WPPost {
   id: number;
   date: string;
