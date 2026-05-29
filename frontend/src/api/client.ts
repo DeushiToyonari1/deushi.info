@@ -55,7 +55,8 @@ function getDummyResponse<T>(
 }
 
 /** WordPress 画像 URL に localhost が含まれていれば WP_BASE ドメインに置換する */
-export function resolveWpUrl(url: string): string {
+export function resolveWpUrl(url: unknown): string {
+  if (!url || typeof url !== 'string') return '';
   if (!WP_BASE || !url.includes('localhost')) return url;
   return url.replace(/https?:\/\/localhost:\d+(?:\/\w+)?/, WP_BASE);
 }

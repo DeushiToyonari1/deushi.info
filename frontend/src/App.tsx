@@ -10,6 +10,7 @@ import { ProfilePage } from './pages/ProfilePage';
 import { ContactPage } from './pages/ContactPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { ImportHelper } from './pages/ImportHelper';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
 export default function App() {
   return (
@@ -17,17 +18,21 @@ export default function App() {
       <SiteHeader />
       <div className="container">
         <main className="mainContainer">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/posts/:slug" element={<PostPage />} />
-            <Route path="/category/:slug" element={<CategoryPage />} />
-            <Route path="/profile/*" element={<ProfilePage />} />
-            <Route path="/contact/*" element={<ContactPage />} />
-            <Route path="/import-helper" element={<ImportHelper />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
+          <ErrorBoundary>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/posts/:slug" element={<PostPage />} />
+              <Route path="/category/:slug" element={<CategoryPage />} />
+              <Route path="/profile/*" element={<ProfilePage />} />
+              <Route path="/contact/*" element={<ContactPage />} />
+              <Route path="/import-helper" element={<ImportHelper />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </ErrorBoundary>
         </main>
-        <Sidebar />
+        <ErrorBoundary>
+          <Sidebar />
+        </ErrorBoundary>
       </div>
       <SiteFooter />
     </div>

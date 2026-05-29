@@ -8,7 +8,7 @@ import type { WPPost, WPMediaItem } from '../types/post';
 function getEmbeddedSrc(post: WPPost): string | null {
   const item = post._embedded?.['wp:featuredmedia']?.[0];
   if (item && 'source_url' in item) {
-    return resolveWpUrl(item.source_url as string) || null;
+    return resolveWpUrl(item.source_url) || null;
   }
   return null;
 }

@@ -16,6 +16,7 @@ function toBase(src: string): string {
  */
 export function PictureImage({ src, alt, className = '', ...rest }: Props) {
   const [loaded, setLoaded] = useState(false);
+  if (!src) return <div className="post-list__media-placeholder" aria-hidden="true" />;
   const base = toBase(src);
 
   return (
