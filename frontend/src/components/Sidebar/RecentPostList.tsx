@@ -26,12 +26,14 @@ export function RecentPostList() {
           <li key={post.id} className="recent-post-list__item">
             <Link to={`/posts/${post.slug}`} className="recent-post-list__link">
               <div className="recent-post-list__inner">
-                <div className="recent-post-list__thumbnail">
-                  <PictureImage
-                    src={media ? media.source_url : '/images/dummy-post-01.png'}
-                    alt={media ? media.alt_text : ''}
-                  />
-                </div>
+                {media && (
+                  <div className="recent-post-list__thumbnail">
+                    <PictureImage
+                      src={media.source_url}
+                      alt={media.alt_text}
+                    />
+                  </div>
+                )}
                 <div className="recent-post-list__body">
                   <div
                     className="recent-post-list__title"

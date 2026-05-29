@@ -26,10 +26,12 @@ export function PostListItem({ post }: Props) {
     <article className="post-list__item">
       <Link to={`/posts/${post.slug}`}>
         <div className="post-list__media">
-          <PictureImage
-              src={mediaUrl ?? '/images/dummy-post-01.png'}
+          {mediaUrl && (
+            <PictureImage
+              src={mediaUrl}
               alt={mediaAlt || post.title.rendered}
             />
+          )}
         </div>
       </Link>
       <div className="post-list__content">
