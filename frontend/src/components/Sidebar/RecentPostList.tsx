@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useRecentPosts } from '../../hooks/useRecentPosts';
 import { PictureImage } from '../PictureImage';
+import { resolveWpUrl } from '../../api/client';
 
 export function RecentPostList() {
   const { data, isLoading, isError } = useRecentPosts();
@@ -13,7 +14,8 @@ export function RecentPostList() {
     <ul className="recent-post-list">
       {data.data.map((post) => {
         const mediaItem = post._embedded?.['wp:featuredmedia']?.[0];
-        const media = mediaItem && 'source_url' in mediaItem ? mediaItem : null;
+        const rawSrc = mediaItem && 'source_url' in mediaItem ? (mediaItem as { source_url: string }).source_url : null;
+        const media = rawSrc ? { source_url: resolveWpUrl(rawSrc), alt_text: (mediaItem as { alt_text?: string }).alt_text ?? '' } : null;
         const dateStr = new Date(post.date).toLocaleDateString('ja-JP', {
           year: 'numeric',
           month: '2-digit',
@@ -26,8 +28,8 @@ export function RecentPostList() {
               <div className="recent-post-list__inner">
                 <div className="recent-post-list__thumbnail">
                   <PictureImage
-                    src={media ? (media as { source_url: string }).source_url : '/images/dummy-post-01.png'}
-                    alt={media ? (media as { alt_text: string }).alt_text || '' : ''}
+                    src={media ? media.source_url : '/images/dummy-post-01.png'}
+                    alt={media ? media.alt_text : ''}
                   />
                 </div>
                 <div className="recent-post-list__body">

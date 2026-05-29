@@ -50,6 +50,12 @@ function getDummyResponse<T>(
   return { data: paginated as T, total: posts.length, totalPages };
 }
 
+/** WordPress 画像 URL に localhost が含まれていれば WP_BASE ドメインに置換する */
+export function resolveWpUrl(url: string): string {
+  if (!WP_BASE || !url.includes('localhost')) return url;
+  return url.replace(/https?:\/\/localhost:\d+(?:\/\w+)?/, WP_BASE);
+}
+
 export async function apiFetch<T>(
   path: string,
   params?: Record<string, string>

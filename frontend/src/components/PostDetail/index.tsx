@@ -4,6 +4,7 @@ import type { DOMNode } from 'html-react-parser';
 import type { WPPost } from '../../types/post';
 import { SEO } from '../SEO';
 import { PictureImage } from '../PictureImage';
+import { resolveWpUrl } from '../../api/client';
 
 interface Props {
   post: WPPost;
@@ -42,7 +43,7 @@ const contentParseOptions: HTMLReactParserOptions = {
 
     return (
       <PictureImage
-        src={src}
+        src={resolveWpUrl(src)}
         alt={alt}
         className={className}
         width={width  ? Number(width)  : undefined}
@@ -55,7 +56,7 @@ const contentParseOptions: HTMLReactParserOptions = {
 export function PostDetail({ post }: Props) {
   // rest_forbidden エラーの場合 source_url が存在しないため、明示的に確認する
   const mediaItem = post._embedded?.['wp:featuredmedia']?.[0];
-  const mediaUrl  = mediaItem && 'source_url' in mediaItem ? mediaItem.source_url as string : null;
+  const mediaUrl  = mediaItem && 'source_url' in mediaItem ? resolveWpUrl(mediaItem.source_url as string) : null;
   const mediaAlt  = mediaItem && 'alt_text'   in mediaItem ? mediaItem.alt_text   as string : '';
   const categories = post._embedded?.['wp:term']?.[0] ?? [];
 

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import type { WPPost } from '../../types/post';
 import { PictureImage } from '../PictureImage';
+import { resolveWpUrl } from '../../api/client';
 
 const FIVE_DAYS_MS = 5 * 24 * 60 * 60 * 1000;
 
@@ -12,7 +13,7 @@ export function PostListItem({ post }: Props) {
   const isNew = Date.now() - new Date(post.date).getTime() < FIVE_DAYS_MS;
   // rest_forbidden エラーの場合 source_url が存在しないため、明示的に確認する
   const mediaItem = post._embedded?.['wp:featuredmedia']?.[0];
-  const mediaUrl  = mediaItem && 'source_url' in mediaItem ? mediaItem.source_url as string : null;
+  const mediaUrl  = mediaItem && 'source_url' in mediaItem ? resolveWpUrl(mediaItem.source_url as string) : null;
   const mediaAlt  = mediaItem && 'alt_text'   in mediaItem ? mediaItem.alt_text   as string : '';
   const category  = post._embedded?.['wp:term']?.[0]?.[0];
   const dateStr = new Date(post.date).toLocaleDateString('ja-JP', {
