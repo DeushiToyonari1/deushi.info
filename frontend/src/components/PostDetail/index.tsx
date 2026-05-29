@@ -22,7 +22,7 @@ function isImgElement(domNode: DOMNode): domNode is DOMNode & {
   name: string;
   attribs: Record<string, string>;
 } {
-  const el = domNode as RawNode;
+  const el = domNode as unknown as RawNode;
   return el['type'] === 'tag' && el['name'] === 'img';
 }
 
